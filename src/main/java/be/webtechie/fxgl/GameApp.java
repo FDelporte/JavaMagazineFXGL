@@ -3,6 +3,8 @@ package be.webtechie.fxgl;
 import static com.almasb.fxgl.dsl.FXGL.*;
 import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
+import be.webtechie.fxgl.GameFactory.EntityType;
+import be.webtechie.fxgl.component.PlayerComponent;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
@@ -92,16 +94,23 @@ public class GameApp extends GameApplication {
     @Override
     protected void initInput() {
 
-        onKeyDown(KeyCode.LEFT, "Move Left", () -> this.player.rotateBy(-SPEED));
-        onKeyDown(KeyCode.RIGHT, "Move Right", () -> this.player.rotateBy(SPEED));
-        onKeyDown(KeyCode.UP, "Move Up", () -> this.player.translateY(-SPEED));
-        onKeyDown(KeyCode.DOWN, "Move Down", () -> this.player.translateY(SPEED));
+        onKeyDown(KeyCode.LEFT, "Move Left", () -> this.player
+                .getComponentOptional(PlayerComponent.class)
+                .ifPresent(PlayerComponent::left));
+        onKeyDown(KeyCode.RIGHT, "Move Right", () -> this.player
+                .getComponentOptional(PlayerComponent.class)
+                .ifPresent(PlayerComponent::right));
+        onKeyDown(KeyCode.UP, "Move Up", () -> this.player
+                .getComponentOptional(PlayerComponent.class)
+                .ifPresent(PlayerComponent::up));
+        onKeyDown(KeyCode.DOWN, "Move Down", () -> this.player
+                .getComponentOptional(PlayerComponent.class)
+                .ifPresent(PlayerComponent::down));
 
-        /*
         onKeyDown(KeyCode.F, () -> {
-            player.getComponent(SnakeHeadComponent.class).grow();
+            spawn("cloud", getAppWidth() / 2, getAppHeight() / 2);
         });
-
+/*
         onKeyDown(KeyCode.G, () -> {
             player.getComponent(SnakeHeadComponent.class).log();
         });
@@ -114,9 +123,28 @@ public class GameApp extends GameApplication {
     @Override
     protected void initGame() {
         getGameWorld().addEntityFactory(this.snakeGameFactory);
-        spawn("background", new SpawnData(0, 0).put("width", 400).put("height", 400));
+        spawn("background", new SpawnData(0, 0).put("width", getAppWidth())
+                .put("height", getAppHeight()));
+        int circleRadius = 80;
+        spawn("center", new SpawnData((getAppWidth() / 2) - (circleRadius / 2), (getAppHeight() / 2) - (circleRadius / 2))
+                .put("x", (circleRadius / 2))
+                .put("y", (circleRadius / 2))
+                .put("radius", circleRadius));
 
         // Add the player
         this.player = spawn("duke", 0, 0);
+    }
+
+    @Override
+    protected void initPhysics() {
+        onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> {
+            this.player.getComponentOptional(PlayerComponent.class)
+                    .ifPresent(PlayerComponent::die);
+        });
+
+        onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> {
+            inc("score", 1);
+            cloud.removeFromWorld();
+        });
     }
 }
