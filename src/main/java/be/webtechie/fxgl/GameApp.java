@@ -93,28 +93,20 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initInput() {
+        onKeyDown(KeyCode.LEFT, "Move Left", () -> this.player.getComponent(PlayerComponent.class).left());
+        onKeyDown(KeyCode.RIGHT, "Move Right", () -> this.player.getComponent(PlayerComponent.class).right());
+        onKeyDown(KeyCode.UP, "Move Up", () -> this.player.getComponent(PlayerComponent.class).up());
+        onKeyDown(KeyCode.DOWN, "Move Down", () -> this.player.getComponent(PlayerComponent.class).down());
+    }
 
-        onKeyDown(KeyCode.LEFT, "Move Left", () -> this.player
-                .getComponentOptional(PlayerComponent.class)
-                .ifPresent(PlayerComponent::left));
-        onKeyDown(KeyCode.RIGHT, "Move Right", () -> this.player
-                .getComponentOptional(PlayerComponent.class)
-                .ifPresent(PlayerComponent::right));
-        onKeyDown(KeyCode.UP, "Move Up", () -> this.player
-                .getComponentOptional(PlayerComponent.class)
-                .ifPresent(PlayerComponent::up));
-        onKeyDown(KeyCode.DOWN, "Move Down", () -> this.player
-                .getComponentOptional(PlayerComponent.class)
-                .ifPresent(PlayerComponent::down));
-
-        onKeyDown(KeyCode.F, () -> {
+    /**
+     * Gets called every frame _only_ in Play state.
+     */
+    @Override
+    protected void onUpdate(double tpf) {
+        if (getGameWorld().getEntitiesByType(EntityType.CLOUD).size() < 10) {
             spawn("cloud", getAppWidth() / 2, getAppHeight() / 2);
-        });
-/*
-        onKeyDown(KeyCode.G, () -> {
-            player.getComponent(SnakeHeadComponent.class).log();
-        });
-        */
+        }
     }
 
     /**
@@ -135,13 +127,12 @@ public class GameApp extends GameApplication {
         this.player = spawn("duke", 0, 0);
     }
 
+    /**
+     * Initialization of the collision handlers.
+     */
     @Override
     protected void initPhysics() {
-        onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> {
-            this.player.getComponentOptional(PlayerComponent.class)
-                    .ifPresent(PlayerComponent::die);
-        });
-
+        onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> this.player.getComponent(PlayerComponent.class).die());
         onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> {
             inc("score", 1);
             cloud.removeFromWorld();

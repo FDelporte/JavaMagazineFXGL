@@ -50,7 +50,7 @@ public class GameFactory implements EntityFactory {
     }
 
     @Spawns("duke")
-    public Entity newSnakeHead(SpawnData data) {
+    public Entity newDuke(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.DUKE)
                 .viewWithBBox(texture("duke.png", 50, 50))
@@ -61,7 +61,7 @@ public class GameFactory implements EntityFactory {
     }
 
     @Spawns("cloud")
-    public Entity newFood(SpawnData data) {
+    public Entity newCloud(SpawnData data) {
         return entityBuilder(data)
                 .type(EntityType.CLOUD)
                 .viewWithBBox(texture("cloud-network.png", 50, 50))
