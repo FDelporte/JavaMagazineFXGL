@@ -5,6 +5,7 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
 import be.webtechie.fxgl.GameFactory.EntityType;
 import be.webtechie.fxgl.component.PlayerComponent;
+import be.webtechie.fxgl.component.PlayerKeyAction;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
@@ -12,6 +13,7 @@ import com.almasb.fxgl.entity.EntityFactory;
 import java.util.Map;
 
 import com.almasb.fxgl.entity.SpawnData;
+import com.almasb.fxgl.input.Input;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -49,7 +51,6 @@ public class GameApp extends GameApplication {
         settings.setWidth(64 * 15);
         settings.setHeight(64 * 15);
         settings.setTitle("Oracle Java Magazine FXGL example game");
-        //settings.setTicksPerSecond(10);
     }
 
     /**
@@ -93,10 +94,13 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initInput() {
-        onKeyDown(KeyCode.LEFT, "Move Left", () -> this.player.getComponent(PlayerComponent.class).left());
-        onKeyDown(KeyCode.RIGHT, "Move Right", () -> this.player.getComponent(PlayerComponent.class).right());
-        onKeyDown(KeyCode.UP, "Move Up", () -> this.player.getComponent(PlayerComponent.class).up());
-        onKeyDown(KeyCode.DOWN, "Move Down", () -> this.player.getComponent(PlayerComponent.class).down());
+        Input input = getInput();
+        input.addAction(new PlayerKeyAction("left", KeyCode.LEFT), KeyCode.LEFT);
+        input.addAction(new PlayerKeyAction("right", KeyCode.RIGHT), KeyCode.RIGHT);
+        input.addAction(new PlayerKeyAction("up", KeyCode.UP), KeyCode.UP);
+        input.addAction(new PlayerKeyAction("down", KeyCode.DOWN), KeyCode.DOWN);
+
+        onKeyDown(KeyCode.SPACE, "Bullet", () -> this.player.getComponent(PlayerComponent.class).shoot());
     }
 
     /**
@@ -125,6 +129,9 @@ public class GameApp extends GameApplication {
 
         // Add the player
         this.player = spawn("duke", 0, 0);
+
+
+
     }
 
     /**
@@ -135,6 +142,11 @@ public class GameApp extends GameApplication {
         onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> this.player.getComponent(PlayerComponent.class).die());
         onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> {
             inc("score", 1);
+            cloud.removeFromWorld();
+        });
+        onCollisionBegin(EntityType.BULLET, EntityType.CLOUD, (bullet, cloud) -> {
+            inc("score", 1);
+            bullet.removeFromWorld();
             cloud.removeFromWorld();
         });
     }

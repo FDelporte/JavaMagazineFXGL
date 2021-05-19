@@ -1,5 +1,6 @@
 package be.webtechie.fxgl.component;
 
+import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.entity.component.Component;
 import javafx.geometry.Point2D;
 
@@ -7,12 +8,19 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class PlayerComponent extends Component {
 
-    private Point2D direction = new Point2D(1, 0);
+    private static final double ROTATION_CHANGE = 0.01;
+
+    private Point2D direction = new Point2D(1, 1);
 
     @Override
     public void onUpdate(double tpf) {
         entity.translate(direction.multiply(2));
         checkForBounds();
+    }
+
+    public void shoot() {
+        spawn("bullet",  new SpawnData(getEntity().getPosition().getX(), getEntity().getPosition().getY())
+                .put("direction", direction));
     }
 
     private void checkForBounds() {
@@ -32,22 +40,31 @@ public class PlayerComponent extends Component {
     public void die() {
         inc("lives", -1);
         entity.setPosition(0, 0);
+        direction = new Point2D(1, 1);
         right();
     }
 
     public void up() {
-        direction = new Point2D(0, -1);
+        if (direction.getY() > -1) {
+            direction = new Point2D(direction.getX(), direction.getY() - ROTATION_CHANGE);
+        }
     }
 
     public void down() {
-        direction = new Point2D(0, 1);
+        if (direction.getY() < 1) {
+            direction = new Point2D(direction.getX(), direction.getY() + ROTATION_CHANGE);
+        }
     }
 
     public void left() {
-        direction = new Point2D(-1, 0);
+        if (direction.getX() > -1) {
+            direction = new Point2D(direction.getX() - ROTATION_CHANGE, direction.getY());
+        }
     }
 
     public void right() {
-        direction = new Point2D(1, 0);
+        if (direction.getX() < 1) {
+            direction = new Point2D(direction.getX() + ROTATION_CHANGE, direction.getY());
+        }
     }
 }
