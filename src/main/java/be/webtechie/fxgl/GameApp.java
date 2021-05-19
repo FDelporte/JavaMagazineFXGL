@@ -5,7 +5,6 @@ import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
 import be.webtechie.fxgl.GameFactory.EntityType;
 import be.webtechie.fxgl.component.PlayerComponent;
-import be.webtechie.fxgl.component.PlayerKeyAction;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
@@ -94,12 +93,10 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initInput() {
-        Input input = getInput();
-        input.addAction(new PlayerKeyAction("left", KeyCode.LEFT), KeyCode.LEFT);
-        input.addAction(new PlayerKeyAction("right", KeyCode.RIGHT), KeyCode.RIGHT);
-        input.addAction(new PlayerKeyAction("up", KeyCode.UP), KeyCode.UP);
-        input.addAction(new PlayerKeyAction("down", KeyCode.DOWN), KeyCode.DOWN);
-
+        onKey(KeyCode.LEFT, "left", () -> this.player.getComponent(PlayerComponent.class).left());
+        onKey(KeyCode.RIGHT, "right", () -> this.player.getComponent(PlayerComponent.class).right());
+        onKey(KeyCode.UP, "up", () -> this.player.getComponent(PlayerComponent.class).up());
+        onKey(KeyCode.DOWN, "down", () -> this.player.getComponent(PlayerComponent.class).down());
         onKeyDown(KeyCode.SPACE, "Bullet", () -> this.player.getComponent(PlayerComponent.class).shoot());
     }
 
@@ -129,9 +126,6 @@ public class GameApp extends GameApplication {
 
         // Add the player
         this.player = spawn("duke", 0, 0);
-
-
-
     }
 
     /**
