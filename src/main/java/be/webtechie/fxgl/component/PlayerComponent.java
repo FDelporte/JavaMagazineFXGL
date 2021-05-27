@@ -14,12 +14,12 @@ public class PlayerComponent extends Component {
 
     @Override
     public void onUpdate(double tpf) {
-        entity.translate(direction.multiply(2));
+        entity.translate(direction.multiply(1));
         checkForBounds();
     }
 
     public void shoot() {
-        spawn("bullet",  new SpawnData(getEntity().getPosition().getX(), getEntity().getPosition().getY())
+        spawn("bullet",  new SpawnData(getEntity().getPosition().getX() + 20, getEntity().getPosition().getY() - 5)
                 .put("direction", direction));
     }
 

@@ -9,17 +9,18 @@ import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
+
+import java.awt.*;
 import java.util.Map;
 
 import com.almasb.fxgl.entity.SpawnData;
-import com.almasb.fxgl.input.Input;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Screen;
 
 public class GameApp extends GameApplication {
-
-    private static final int SPEED = 5;
 
     /**
      * Reference to the factory which will defines how all the types must be created.
@@ -31,24 +32,32 @@ public class GameApp extends GameApplication {
      */
     private Entity player;
 
+    private static int screenWidth;
+    private static int screenHeight;
+
     /**
      * Main entry point where the application starts.
      *
      * @param args Start-up arguments
      */
     public static void main(String[] args) {
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        screenWidth = (int) screenSize.getWidth();
+        screenHeight = (int) screenSize.getHeight();
         launch(args);
     }
 
     /**
-     * General game settings. For now only the title is set, but a longer list of options is available.
+     * General game settings.
      *
      * @param settings The settings of the game which can be further extended here.
      */
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setWidth(64 * 15);
-        settings.setHeight(64 * 15);
+        settings.setHeight(screenHeight);
+        settings.setWidth(screenWidth);
+        settings.setFullScreenAllowed(true);
+        settings.setFullScreenFromStart(true);
         settings.setTitle("Oracle Java Magazine FXGL example game");
     }
 
@@ -134,10 +143,7 @@ public class GameApp extends GameApplication {
     @Override
     protected void initPhysics() {
         onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> this.player.getComponent(PlayerComponent.class).die());
-        onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> {
-            inc("score", 1);
-            cloud.removeFromWorld();
-        });
+        onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> this.player.getComponent(PlayerComponent.class).die());
         onCollisionBegin(EntityType.BULLET, EntityType.CLOUD, (bullet, cloud) -> {
             inc("score", 1);
             bullet.removeFromWorld();

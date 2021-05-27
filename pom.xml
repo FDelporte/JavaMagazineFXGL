@@ -8,7 +8,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>16</java.version>
-        <fxgl.version>11.15</fxgl.version>
+        <fxgl.version>11.16</fxgl.version>
     </properties>
 
     <dependencies>
