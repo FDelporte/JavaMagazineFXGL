@@ -14,7 +14,6 @@ import java.awt.*;
 import java.util.Map;
 
 import com.almasb.fxgl.entity.SpawnData;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -57,7 +56,7 @@ public class GameApp extends GameApplication {
         settings.setWidth(screenWidth);
         settings.setFullScreenAllowed(true);
         settings.setFullScreenFromStart(true);
-        settings.setTitle("Oracle Java Magazine FXGL example game");
+        settings.setTitle("Oracle Java Magazine - FXGL");
     }
 
     /**
