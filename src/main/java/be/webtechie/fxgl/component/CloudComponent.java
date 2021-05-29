@@ -17,17 +17,18 @@ public class CloudComponent extends Component {
     }
 
     private void checkForBounds() {
-        if (entity.getX() < 0)
+        if (entity.getX() < 0) {
             remove();
-
-        if (entity.getX() >= getAppWidth())
+        }
+        if (entity.getX() >= getAppWidth()) {
             remove();
-
-        if (entity.getY() < 0)
+        }
+        if (entity.getY() < 0) {
             remove();
-
-        if (entity.getY() >= getAppHeight())
+        }
+        if (entity.getY() >= getAppHeight()) {
             remove();
+        }
     }
 
     public void remove() {

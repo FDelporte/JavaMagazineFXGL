@@ -18,7 +18,6 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 
 public class GameApp extends GameApplication {
 
@@ -62,42 +61,6 @@ public class GameApp extends GameApplication {
     }
 
     /**
-     * General game variables. Used to hold the points and lives.
-     *
-     * @param vars The variables of the game which can be further extended here.
-     */
-    @Override
-    protected void initGameVars(Map<String, Object> vars) {
-        vars.put("score", 0);
-        vars.put("lives", 5);
-    }
-
-    @Override
-    protected void initUI() {
-        Text scoreLabel = getUIFactoryService().newText("Score", Color.BLACK, 22);
-        Text scoreValue = getUIFactoryService().newText("", Color.BLACK, 22);
-        Text livesLabel = getUIFactoryService().newText("Lives", Color.BLACK, 22);
-        Text livesValue = getUIFactoryService().newText("", Color.BLACK, 22);
-
-        scoreLabel.setTranslateX(20);
-        scoreLabel.setTranslateY(20);
-
-        scoreValue.setTranslateX(90);
-        scoreValue.setTranslateY(20);
-
-        livesLabel.setTranslateX(getAppWidth() - 100);
-        livesLabel.setTranslateY(20);
-
-        livesValue.setTranslateX(getAppWidth() - 30);
-        livesValue.setTranslateY(20);
-
-        scoreValue.textProperty().bind(getWorldProperties().intProperty("score").asString());
-        livesValue.textProperty().bind(getWorldProperties().intProperty("lives").asString());
-
-        getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue);
-    }
-
-    /**
      * Input configuration, here you configure all the input events like key presses, mouse clicks, etc.
      */
     @Override
@@ -110,13 +73,14 @@ public class GameApp extends GameApplication {
     }
 
     /**
-     * Gets called every frame _only_ in Play state.
+     * General game variables. Used to hold the points and lives.
+     *
+     * @param vars The variables of the game which can be further extended here.
      */
     @Override
-    protected void onUpdate(double tpf) {
-        if (getGameWorld().getEntitiesByType(EntityType.CLOUD).size() < 10) {
-            spawn("cloud", getAppWidth() / 2, getAppHeight() / 2);
-        }
+    protected void initGameVars(Map<String, Object> vars) {
+        vars.put("score", 0);
+        vars.put("lives", 5);
     }
 
     /**
@@ -149,5 +113,43 @@ public class GameApp extends GameApplication {
             bullet.removeFromWorld();
             cloud.removeFromWorld();
         });
+    }
+
+    /**
+     * Configuration of the user interface.
+     */
+    @Override
+    protected void initUI() {
+        Text scoreLabel = getUIFactoryService().newText("Score", Color.BLACK, 22);
+        Text scoreValue = getUIFactoryService().newText("", Color.BLACK, 22);
+        Text livesLabel = getUIFactoryService().newText("Lives", Color.BLACK, 22);
+        Text livesValue = getUIFactoryService().newText("", Color.BLACK, 22);
+
+        scoreLabel.setTranslateX(20);
+        scoreLabel.setTranslateY(20);
+
+        scoreValue.setTranslateX(90);
+        scoreValue.setTranslateY(20);
+
+        livesLabel.setTranslateX(getAppWidth() - 150);
+        livesLabel.setTranslateY(20);
+
+        livesValue.setTranslateX(getAppWidth() - 80);
+        livesValue.setTranslateY(20);
+
+        scoreValue.textProperty().bind(getWorldProperties().intProperty("score").asString());
+        livesValue.textProperty().bind(getWorldProperties().intProperty("lives").asString());
+
+        getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue);
+    }
+
+    /**
+     * Gets called every frame _only_ in Play state.
+     */
+    @Override
+    protected void onUpdate(double tpf) {
+        if (getGameWorld().getEntitiesByType(EntityType.CLOUD).size() < 10) {
+            spawn("cloud", getAppWidth() / 2, getAppHeight() / 2);
+        }
     }
 }

@@ -18,27 +18,37 @@ public class PlayerComponent extends Component {
         checkForBounds();
     }
 
-    public void shoot() {
-        spawn("bullet",  new SpawnData(getEntity().getPosition().getX() + 20, getEntity().getPosition().getY() - 5)
-                .put("direction", direction));
+    private void checkForBounds() {
+        if (entity.getX() < 0) {
+            die();
+        }
+        if (entity.getX() >= getAppWidth()) {
+            die();
+        }
+        if (entity.getY() < 0) {
+            die();
+        }
+        if (entity.getY() >= getAppHeight()) {
+            die();
+        }
     }
 
-    private void checkForBounds() {
-        if (entity.getX() < 0)
-            die();
-
-        if (entity.getX() >= getAppWidth())
-            die();
-
-        if (entity.getY() < 0)
-            die();
-
-        if (entity.getY() >= getAppHeight())
-            die();
+    public void shoot() {
+        spawn("bullet", new SpawnData(
+                getEntity().getPosition().getX() + 20,
+                getEntity().getPosition().getY() - 5)
+                .put("direction", direction));
     }
 
     public void die() {
         inc("lives", -1);
+
+        if (geti("lives") <= 0) {
+            getDialogService().showMessageBox("Game Over",
+                    () -> getGameController().startNewGame());
+            return;
+        }
+
         entity.setPosition(0, 0);
         direction = new Point2D(1, 1);
         right();
