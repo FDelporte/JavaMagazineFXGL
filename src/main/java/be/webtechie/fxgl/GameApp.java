@@ -23,7 +23,7 @@ public class GameApp extends GameApplication {
     /**
      * Reference to the factory which will defines how all the types must be created.
      */
-    private final GameFactory snakeGameFactory = new GameFactory();
+    private final GameFactory gameFactory = new GameFactory();
 
     /**
      * Player object we are going to use to provide to the factory so it can start a bullet from the player center.
@@ -87,7 +87,7 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(this.snakeGameFactory);
+        getGameWorld().addEntityFactory(this.gameFactory);
         spawn("background", new SpawnData(0, 0).put("width", getAppWidth())
                 .put("height", getAppHeight()));
         int circleRadius = 80;
