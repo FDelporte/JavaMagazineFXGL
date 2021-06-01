@@ -1,22 +1,22 @@
 package be.webtechie.fxgl;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
-
 import be.webtechie.fxgl.GameFactory.EntityType;
 import be.webtechie.fxgl.component.PlayerComponent;
+import be.webtechie.fxgl.pi4j.Pi4JFactory;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
-
-import java.awt.*;
-import java.util.Map;
-
 import com.almasb.fxgl.entity.SpawnData;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+
+import java.awt.*;
+import java.util.Map;
+
+import static com.almasb.fxgl.dsl.FXGL.*;
+import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
 
 public class GameApp extends GameApplication {
 
@@ -24,6 +24,11 @@ public class GameApp extends GameApplication {
      * Reference to the factory which will defines how all the types must be created.
      */
     private final GameFactory gameFactory = new GameFactory();
+
+    /**
+     * Reference to the Pi4J factory which manages the GPIOs.
+     */
+    private final Pi4JFactory pi4JFactory = new Pi4JFactory();
 
     /**
      * Player object we are going to use to provide to the factory so it can start a bullet from the player center.
@@ -64,11 +69,11 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initInput() {
-        onKey(KeyCode.LEFT, "left", () -> this.player.getComponent(PlayerComponent.class).left());
-        onKey(KeyCode.RIGHT, "right", () -> this.player.getComponent(PlayerComponent.class).right());
-        onKey(KeyCode.UP, "up", () -> this.player.getComponent(PlayerComponent.class).up());
-        onKey(KeyCode.DOWN, "down", () -> this.player.getComponent(PlayerComponent.class).down());
-        onKeyDown(KeyCode.SPACE, "Bullet", () -> this.player.getComponent(PlayerComponent.class).shoot());
+        onKey(KeyCode.LEFT, "left", () -> player.getComponent(PlayerComponent.class).left());
+        onKey(KeyCode.RIGHT, "right", () -> player.getComponent(PlayerComponent.class).right());
+        onKey(KeyCode.UP, "up", () -> player.getComponent(PlayerComponent.class).up());
+        onKey(KeyCode.DOWN, "down", () -> player.getComponent(PlayerComponent.class).down());
+        onKeyDown(KeyCode.SPACE, "Bullet", () -> player.getComponent(PlayerComponent.class).shoot());
     }
 
     /**
@@ -87,7 +92,7 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(this.gameFactory);
+        getGameWorld().addEntityFactory(gameFactory);
         spawn("background", new SpawnData(0, 0).put("width", getAppWidth())
                 .put("height", getAppHeight()));
         int circleRadius = 80;
@@ -97,7 +102,7 @@ public class GameApp extends GameApplication {
                 .put("radius", circleRadius));
 
         // Add the player
-        this.player = spawn("duke", 0, 0);
+        player = spawn("duke", 0, 0);
     }
 
     /**
@@ -105,8 +110,8 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initPhysics() {
-        onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> this.player.getComponent(PlayerComponent.class).die());
-        onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> this.player.getComponent(PlayerComponent.class).die());
+        onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> player.getComponent(PlayerComponent.class).die());
+        onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> player.getComponent(PlayerComponent.class).die());
         onCollisionBegin(EntityType.BULLET, EntityType.CLOUD, (bullet, cloud) -> {
             inc("score", 1);
             bullet.removeFromWorld();
@@ -149,6 +154,7 @@ public class GameApp extends GameApplication {
     protected void onUpdate(double tpf) {
         if (getGameWorld().getEntitiesByType(EntityType.CLOUD).size() < 10) {
             spawn("cloud", getAppWidth() / 2, getAppHeight() / 2);
+            pi4JFactory.getConsole().print("New cloud added");
         }
     }
 }
