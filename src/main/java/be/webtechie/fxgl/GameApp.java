@@ -12,7 +12,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-import java.awt.*;
 import java.util.Map;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -35,8 +34,8 @@ public class GameApp extends GameApplication {
      */
     private Entity player;
 
-    private static int screenWidth;
-    private static int screenHeight;
+    private final int screenWidth = 1024;
+    private final int screenHeight = 600;
 
     /**
      * Main entry point where the application starts.
@@ -44,9 +43,6 @@ public class GameApp extends GameApplication {
      * @param args Start-up arguments
      */
     public static void main(String[] args) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        screenWidth = (int) screenSize.getWidth();
-        screenHeight = (int) screenSize.getHeight();
         launch(args);
     }
 
