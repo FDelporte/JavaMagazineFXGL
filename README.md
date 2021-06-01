@@ -13,7 +13,7 @@ Branch "main"
 
 ### Post 2 - "Controlling a JavaFX game with a joystick on Raspberry Pi"
 
-Branch "RaspberryPi"
+Branch "pi4j"
   
   
 
