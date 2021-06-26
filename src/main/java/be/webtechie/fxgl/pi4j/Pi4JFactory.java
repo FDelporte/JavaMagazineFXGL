@@ -47,19 +47,19 @@ public class Pi4JFactory {
             console.title("<-- The Pi4J Project -->", "FXGL Example project");
 
             // Joystick inputs
-            initInputGpio(pi4j, "JoystickUp", PIN_JOYSTICK_UP, KeyCode.UP);
-            initInputGpio(pi4j, "JoystickDown", PIN_JOYSTICK_DOWN, KeyCode.DOWN);
-            initInputGpio(pi4j, "JoystickLeft", PIN_JOYSTICK_LEFT, KeyCode.LEFT);
-            initInputGpio(pi4j, "JoystickRight", PIN_JOYSTICK_RIGHT, KeyCode.RIGHT);
+            initInputGpio("JoystickUp", PIN_JOYSTICK_UP, KeyCode.UP);
+            initInputGpio("JoystickDown", PIN_JOYSTICK_DOWN, KeyCode.DOWN);
+            initInputGpio("JoystickLeft", PIN_JOYSTICK_LEFT, KeyCode.LEFT);
+            initInputGpio("JoystickRight", PIN_JOYSTICK_RIGHT, KeyCode.RIGHT);
 
             // Push button inputs
-            initInputGpio(pi4j, "ButtonBullet", PIN_BUTTON_1, KeyCode.SPACE);
+            initInputGpio("ButtonBullet", PIN_BUTTON_1, KeyCode.SPACE);
         } catch (Exception ex) {
             console.println("Error while initializing Pi4J: " + ex.getMessage());
         }
     }
 
-    private void initInputGpio(Context pi4j, String id, int bcm, KeyCode keyCode) {
+    private void initInputGpio(String id, int bcm, KeyCode keyCode) {
         var input = pi4j.create(DigitalInput.newConfigBuilder(pi4j)
                 .id(id)
                 .address(bcm)
