@@ -168,6 +168,11 @@
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>true</overWriteSnapshots>
                             <overWriteIfNewer>true</overWriteIfNewer>
+                            <!--
+                            On the Raspberry Pi we use specific JavaFX dependencies,
+                            so we exclude them here and they are added in the run-script.
+                            -->
+                            <excludeGroupIds>org.openjfx</excludeGroupIds>
                         </configuration>
                     </execution>
                 </executions>
