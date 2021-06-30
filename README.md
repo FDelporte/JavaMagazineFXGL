@@ -4,18 +4,18 @@ A JavaFX/FXGL example game.
 
 ## About the project
 
-A full description will be published on Oracle Java Magazine in different posts.
-For each post a separate branch is created.
+A full description will be published on Oracle Java Magazine in different posts. For each post a separate branch is
+created.
 
 ### Post 1 - "Building a game with JavaFX and FXGL"
 
-Branch "main"
+Article: ["Look out, Duke! How to build a Java game with JavaFX and the FXGL library"](https://blogs.oracle.com/javamagazine/java-javafx-fxgl-game-development)
+
+> Branch "main"
 
 ### Post 2 - "Controlling a JavaFX game with a joystick on Raspberry Pi"
 
-Branch "pi4j"
-  
-  
+> Branch "pi4j"
 
 ## Credits
 
