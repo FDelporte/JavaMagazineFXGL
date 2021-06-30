@@ -14,7 +14,7 @@ public class PlayerComponent extends Component {
 
     @Override
     public void onUpdate(double tpf) {
-        entity.translate(direction.multiply(1));
+        entity.translate(direction.multiply(tpf * 30));
         checkForBounds();
     }
 
