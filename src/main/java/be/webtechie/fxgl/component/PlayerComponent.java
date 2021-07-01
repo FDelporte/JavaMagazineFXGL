@@ -8,7 +8,7 @@ import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class PlayerComponent extends Component {
 
-    private static final double ROTATION_CHANGE = 0.01;
+    private static final double ROTATION_CHANGE = 0.5;
 
     private Point2D direction = new Point2D(1, 1);
 

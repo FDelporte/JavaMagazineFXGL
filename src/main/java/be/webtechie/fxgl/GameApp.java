@@ -58,6 +58,9 @@ public class GameApp extends GameApplication {
         settings.setFullScreenAllowed(true);
         settings.setFullScreenFromStart(true);
         settings.setTitle("Oracle Java Magazine - FXGL");
+
+        // We can use the Pi4J Console to log
+        pi4JFactory.getConsole().print("FXGL init settings done");
     }
 
     /**
@@ -150,7 +153,6 @@ public class GameApp extends GameApplication {
     protected void onUpdate(double tpf) {
         if (getGameWorld().getEntitiesByType(EntityType.CLOUD).size() < 10) {
             spawn("cloud", getAppWidth() / 2, getAppHeight() / 2);
-            pi4JFactory.getConsole().print("New cloud added");
         }
     }
 }

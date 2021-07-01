@@ -41,6 +41,7 @@
     </repositories>
 
     <dependencies>
+        <!-- Pi4J uses SLF4J as logger -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -52,14 +53,12 @@
             <version>${slf4j.version}</version>
         </dependency>
 
-        <!-- include Pi4J Core -->
+        <!-- include Pi4J Core and plugins -->
         <dependency>
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-core</artifactId>
             <version>${pi4j.version}</version>
         </dependency>
-
-        <!-- include Pi4J Plugins (Platforms and I/O Providers) -->
         <dependency>
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-plugin-raspberrypi</artifactId>
