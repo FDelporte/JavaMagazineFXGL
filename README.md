@@ -51,6 +51,22 @@ the [Gluon Client documentation](https://docs.gluonhq.com/client/#_requirements)
 
     mvn -Pios client:build client:package client:install client:run
 
+## Google Console
+
+### Create a service account
+
+* https://console.cloud.google.com
+*
+
+## Google Play Store
+
+### Create an app
+
+* https://play.google.com/console
+* "Create app"
+
+### Users and permissions
+
 ## GitHub Actions
 
 https://docs.gluonhq.com/#_the_gluon_client_plugin_for_maven
@@ -61,7 +77,7 @@ https://docs.gluonhq.com/#_the_gluon_client_plugin_for_maven
 * ANDROID_KEYALIAS_PASSWORD
 * ANDROID_KEYSTORE_BASE64
 * ANDROID_KEYSTORE_PASSWORD
-* SERVICE_ACCOUNT_JSON
+* ANDROID_SERVICE_ACCOUNT_JSON
 * GLUON_LICENSE
 
 ## Credits
