@@ -15,28 +15,34 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      # Checkout your code
       - uses: actions/checkout@v2
-      - name: Setup GraalVM environment
-        uses: DeLaGuardo/setup-graalvm@master
-        with:
-          graalvm: '21.1.0'
-          java: 'java16'
-      - name: APT update
-        run: sudo apt update
+
+      # Make sure the latest GraalVM is installed.
+      # after this step env.JAVA_HOME and env.GRAALVM_HOME will point to the GraalVM location
+      - name: Setup GraalVM built by Gluon
+        uses: gluonhq/setup-graalvm@master
+        # set GITHUB_TOKEN to avoid exceeding GitHub's API rate limit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Install extra required packaged on top of ubuntu-latest
       - name: Install libraries
         run: sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+
+      # Create a staging directory where the binary will be copied into
       - name: Make staging directory
         run: mkdir staging
-      - name: Setup Android Keystore
-        id: android_keystore_file
-        uses: timheuer/base64-to-file@v1
-        with:
-          fileName: 'my.keystore'
-          encodedString: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+
+      # Install the Gluon License (optional)
+      # Using this step requires you to set a GLUON_LICENSE secret in the secret configuration of your repo. Have a look at https://gluonhq.com/products/mobile/buy for more information about obtaining a license.
       - name: Gluon License
         uses: gluonhq/gluon-build-license@v1
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
+
+      # Build your project using Maven
+      # The desktop profile is used, which means a native build will be created for the host platform (in this case Linux) itself.
       - name: Gluon Build
         run: mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package
         env:
@@ -45,19 +51,23 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEYALIAS: ${{ secrets.ANDROID_KEYALIAS }}
           ANDROID_KEYALIAS_PASSWORD: ${{ secrets.ANDROID_KEYALIAS_PASSWORD }}
+
       - name: Show created files
         run: ls -l target/client/aarch64-android/gvm/
+
       - name: Copy native clients to staging
         run: cp -r target/client/aarch64-android/gvm/EmojiSnakeGameApp.apk staging
+
       - name: Upload
         uses: actions/upload-artifact@v2
         with:
           name: Package
           path: staging
+
       - name: Upoad to Google Play
         uses: r0adkll/upload-google-play@v1
         with:
           serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          packageName: be.webtechie.emojisnakegameapp
-          releaseFiles: target/client/aarch64-android/gvm/EmojiSnakeGameApp.apk
+          packageName: be.webtechie.fxgl
+          releaseFiles: target/client/aarch64-android/gvm/GameApp.apk
           track: beta
