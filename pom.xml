@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.webtechie</groupId>
     <artifactId>javamagazine-fxgl</artifactId>
@@ -7,8 +7,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>16</java.version>
+        <main.class>be.webtechie.fxgl.GameApp</main.class>
+
+        <attach.version>4.0.9</attach.version>
+        <client.plugin.version>0.1.35</client.plugin.version>
         <fxgl.version>11.16</fxgl.version>
+        <java.version>16</java.version>
+        <javafx.plugin.version>0.0.5</javafx.plugin.version>
+        <maven.compiler.release>16</maven.compiler.release>
     </properties>
 
     <dependencies>
@@ -24,36 +30,153 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <version>3.8.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>${javafx.plugin.version}</version>
                 <configuration>
-                    <release>${java.version}</release>
+                    <mainClass>${main.class}</mainClass>
                 </configuration>
             </plugin>
-
             <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2.1</version>
+                <groupId>com.gluonhq</groupId>
+                <artifactId>client-maven-plugin</artifactId>
+                <version>${client.plugin.version}</version>
                 <configuration>
-                    <descriptorRefs>
-                        <descriptorRef>jar-with-dependencies</descriptorRef>
-                    </descriptorRefs>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>be.webtechie.fxgl.GameApp</mainClass>
-                        </manifest>
-                    </archive>
+                    <nativeImageArgs>--allow-incomplete-classpath</nativeImageArgs>
+                    <resourcesList>
+                        <list>.*\\.lang$</list>
+                        <list>.*\\.tmx$</list>
+                        <list>.*\\.wav$</list>
+                        <list>.*\\.mp3$</list>
+                    </resourcesList>
+                    <reflectionList>
+                        <list>com.almasb.fxgl.app.GameApplication</list>
+                        <list>com.almasb.fxgl.app.FXGLApplication</list>
+                        <list>com.almasb.fxgl.app.ReadOnlyGameSettings</list>
+                        <list>com.almasb.fxgl.app.GameSettings</list>
+
+                        <!-- Engine services -->
+                        <list>com.almasb.fxgl.app.services.FXGLDialogService</list>
+                        <list>com.almasb.fxgl.app.services.IOTaskExecutorService</list>
+                        <list>com.almasb.fxgl.app.services.SystemBundleService</list>
+                        <list>com.almasb.fxgl.app.services.UpdaterService</list>
+                        <list>com.almasb.fxgl.app.services.FXGLAssetLoaderService</list>
+                        <list>com.almasb.fxgl.core.asset.AssetLoaderService</list>
+                        <list>com.almasb.fxgl.cutscene.CutsceneService</list>
+                        <list>com.almasb.fxgl.dev.DevService</list>
+                        <list>com.almasb.fxgl.dev.profiling.ProfilerService</list>
+                        <list>com.almasb.fxgl.event.EventBusService</list>
+                        <list>com.almasb.fxgl.io.FileSystemService</list>
+                        <list>com.almasb.fxgl.localization.LocalizationService</list>
+                        <list>com.almasb.fxgl.minigames.MiniGameService</list>
+                        <list>com.almasb.fxgl.net.NetService</list>
+                        <list>com.almasb.fxgl.profile.SaveLoadService</list>
+                        <list>com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider</list>
+                        <list>com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider</list>
+                        <list>com.almasb.fxgl.app.FXGLApplication$GameApplicationService</list>
+                        <list>com.almasb.fxgl.audio.AudioPlayer</list>
+                        <list>com.almasb.fxgl.notification.impl.NotificationServiceProvider</list>
+                        <list>com.almasb.fxgl.notification.view.XboxNotificationView</list>
+                        <list>com.almasb.fxgl.achievement.AchievementService</list>
+                        <list>com.almasb.fxgl.core.math.Vec2</list>
+                        <list>com.almasb.fxgl.particle.Particle</list>
+
+                        <!-- Components -->
+                        <list>com.almasb.fxgl.entity.components.BoundingBoxComponent</list>
+                        <list>com.almasb.fxgl.entity.components.CollidableComponent</list>
+                        <list>com.almasb.fxgl.entity.components.IDComponent</list>
+                        <list>com.almasb.fxgl.entity.components.IrremovableComponent</list>
+                        <list>com.almasb.fxgl.entity.components.TimeComponent</list>
+                        <list>com.almasb.fxgl.entity.components.TransformComponent</list>
+                        <list>com.almasb.fxgl.entity.components.TypeComponent</list>
+                        <list>com.almasb.fxgl.entity.components.ViewComponent</list>
+                        <list>com.almasb.fxgl.particle.ParticleComponent</list>
+                        <list>com.almasb.fxgl.physics.PhysicsComponent</list>
+                        <list>com.almasb.fxgl.dsl.components.EffectComponent</list>
+                        <list>com.almasb.fxgl.dsl.components.LiftComponent</list>
+                        <list>com.almasb.fxgl.dsl.components.OffscreenCleanComponent</list>
+                        <list>com.almasb.fxgl.dsl.components.OffscreenPauseComponent</list>
+                        <list>com.almasb.fxgl.dsl.components.ProjectileComponent</list>
+                        <list>com.almasb.fxgl.dsl.components.AutoRotationComponent</list>
+
+                        <!--     Custom components                  -->
+                        <list>be.webtechie.emojisnakeapp.Main</list>
+                        <list>be.webtechie.emojisnakeapp.component.SnakeHeadComponent</list>
+                        <list>be.webtechie.emojisnakeapp.game.SnakeGameApp</list>
+                        <list>be.webtechie.emojisnakeapp.game.SnakeGameFactory</list>
+                    </reflectionList>
+                    <verbose>true</verbose>
+                    <target>${client.target}</target>
+                    <mainClass>${main.class}</mainClass>
+                    <attachList>
+                        <list>audio</list>
+                        <list>util</list>
+                        <list>device</list>
+                        <list>display</list>
+                        <list>lifecycle</list>
+                        <list>magnetometer</list>
+                        <list>orientation</list>
+                        <list>statusbar</list>
+                        <list>storage</list>
+                        <list>vibration</list>
+                    </attachList>
+                    <releaseConfiguration>
+                        <!-- for iOS -->
+                        <bundleVersion>${env.GITHUB_RUN_NUMBER}</bundleVersion>
+                        <!-- for Android -->
+                        <versionCode>${env.GITHUB_RUN_NUMBER}</versionCode>
+                        <providedKeyStorePath>${env.ANDROID_KEYSTOREPATH}</providedKeyStorePath>
+                        <providedKeyStorePassword>${env.ANDROID_KEYSTORE_PASSWORD}</providedKeyStorePassword>
+                        <providedKeyAlias>${env.ANDROID_KEYALIAS}</providedKeyAlias>
+                        <providedKeyAliasPassword>${env.ANDROID_KEYALIAS_PASSWORD}</providedKeyAliasPassword>
+                    </releaseConfiguration>
                 </configuration>
-                <executions>
-                    <execution>
-                        <id>make-assembly</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>single</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
         </plugins>
     </build>
+
+
+    <profiles>
+        <profile>
+            <id>desktop</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <client.target>host</client.target>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>display</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>lifecycle</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>storage</artifactId>
+                    <version>${attach.version}</version>
+                    <classifier>desktop</classifier>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>android</id>
+            <properties>
+                <client.target>android</client.target>
+            </properties>
+        </profile>
+    </profiles>
 </project>
