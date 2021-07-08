@@ -17,6 +17,10 @@ Article: ["Look out, Duke! How to build a Java game with JavaFX and the FXGL lib
 
 > Branch "pi4j"
 
+### Post 3 - "Publishing a JavaFX game to the Google Play Store"
+
+> Branch "mobile"
+
 ## Credits
 
 * Cloud computer icon from [flaticon.com](https://www.flaticon.com) > [srip](https://www.flaticon.com/authors/srip)
