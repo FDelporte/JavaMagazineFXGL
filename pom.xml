@@ -13,9 +13,9 @@
         <client.plugin.version>0.1.35</client.plugin.version>
         <fxgl.version>11.16</fxgl.version>
         <gluonfx.maven.version>1.0.2</gluonfx.maven.version>
-        <java.version>16</java.version>
+        <java.version>11</java.version>
         <javafx.plugin.version>0.0.5</javafx.plugin.version>
-        <maven.compiler.release>16</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
     </properties>
 
     <dependencies>
