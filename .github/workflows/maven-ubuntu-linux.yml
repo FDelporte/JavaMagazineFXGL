@@ -9,9 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    jobs:
-    build:
-      runs-on: ubuntu-latest
     steps:
       # Checkout your code
       - uses: actions/checkout@v2
