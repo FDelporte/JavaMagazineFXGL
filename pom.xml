@@ -12,6 +12,7 @@
         <attach.version>4.0.9</attach.version>
         <client.plugin.version>0.1.35</client.plugin.version>
         <fxgl.version>11.16</fxgl.version>
+        <gluonfx.maven.version>1.0.2</gluonfx.maven.version>
         <java.version>16</java.version>
         <javafx.plugin.version>0.0.5</javafx.plugin.version>
         <maven.compiler.release>16</maven.compiler.release>
@@ -32,6 +33,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
             </plugin>
+
             <plugin>
                 <groupId>org.openjfx</groupId>
                 <artifactId>javafx-maven-plugin</artifactId>
@@ -40,10 +42,11 @@
                     <mainClass>${main.class}</mainClass>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>com.gluonhq</groupId>
-                <artifactId>client-maven-plugin</artifactId>
-                <version>${client.plugin.version}</version>
+                <artifactId>gluonfx-maven-plugin</artifactId>
+                <version>${gluonfx.maven.version}</version>
                 <configuration>
                     <nativeImageArgs>--allow-incomplete-classpath</nativeImageArgs>
                     <resourcesList>
@@ -103,10 +106,10 @@
                         <list>com.almasb.fxgl.dsl.components.AutoRotationComponent</list>
 
                         <!--     Custom components                  -->
-                        <list>be.webtechie.emojisnakeapp.Main</list>
-                        <list>be.webtechie.emojisnakeapp.component.SnakeHeadComponent</list>
-                        <list>be.webtechie.emojisnakeapp.game.SnakeGameApp</list>
-                        <list>be.webtechie.emojisnakeapp.game.SnakeGameFactory</list>
+                        <list>be.webtechie.fxgl.GameApp</list>
+                        <list>be.webtechie.fxgl.GameFactory</list>
+                        <list>be.webtechie.fxgl.component.CloudComponent</list>
+                        <list>be.webtechie.fxgl.component.PlayerComponent</list>
                     </reflectionList>
                     <verbose>true</verbose>
                     <target>${client.target}</target>
@@ -137,7 +140,6 @@
             </plugin>
         </plugins>
     </build>
-
 
     <profiles>
         <profile>
@@ -172,6 +174,7 @@
                 </dependency>
             </dependencies>
         </profile>
+
         <profile>
             <id>android</id>
             <properties>

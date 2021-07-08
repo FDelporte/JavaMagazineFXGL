@@ -38,7 +38,7 @@ jobs:
         with:
           gluon-license: ${{ secrets.GLUON_LICENSE }}
       - name: Gluon Build
-        run: mvn -DconsoleProcessLog=true -Pandroid client:build client:package
+        run: mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package
         env:
           GRAALVM_HOME: ${{ env.JAVA_HOME }}
           ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}

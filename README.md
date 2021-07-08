@@ -51,6 +51,19 @@ the [Gluon Client documentation](https://docs.gluonhq.com/client/#_requirements)
 
     mvn -Pios client:build client:package client:install client:run
 
+## GitHub Actions
+
+https://docs.gluonhq.com/#_the_gluon_client_plugin_for_maven
+
+### Secrets
+
+* ANDROID_KEYALIAS
+* ANDROID_KEYALIAS_PASSWORD
+* ANDROID_KEYSTORE_BASE64
+* ANDROID_KEYSTORE_PASSWORD
+* SERVICE_ACCOUNT_JSON
+* GLUON_LICENSE
+
 ## Credits
 
 * Cloud computer icon from [flaticon.com](https://www.flaticon.com) > [srip](https://www.flaticon.com/authors/srip)
