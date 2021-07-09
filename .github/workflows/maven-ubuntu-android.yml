@@ -52,11 +52,12 @@ jobs:
           ANDROID_KEYALIAS: ${{ secrets.ANDROID_KEYALIAS }}
           ANDROID_KEYALIAS_PASSWORD: ${{ secrets.ANDROID_KEYALIAS_PASSWORD }}
 
+      # List the created files so we know which one to copy in the next step
       - name: Show created files
-        run: ls -l target/client/aarch64-android/gvm/
+        run: ls -l target/gluonfx/aarch64-android/gvm/
 
       - name: Copy native clients to staging
-        run: cp -r target/client/aarch64-android/gvm/EmojiSnakeGameApp.apk staging
+        run: cp -r target/gluonfx/aarch64-android/gvm/GameApp.apk staging
 
       - name: Upload
         uses: actions/upload-artifact@v2

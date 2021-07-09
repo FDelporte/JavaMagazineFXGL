@@ -44,6 +44,10 @@ jobs:
       - name: Gluon Build
         run: mvn -Pdesktop gluonfx:build gluonfx:package
 
+      # List the created files so we know which one to copy in the next step
+      - name: Show created files
+        run: ls -l target/gluonfx/x86_64-windows/
+
       # Copy the native binary to the staging directory
       - name: Copy native image to staging
         run: cp -r target/gluonfx/x86_64-windows/GameApp.exe staging
