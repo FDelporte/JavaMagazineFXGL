@@ -37,19 +37,21 @@ the [Gluon Client documentation](https://docs.gluonhq.com/client/#_requirements)
 
 ### Run the sample
 
-    mvn javafx:run
-
-### Run the sample as a native image
-
-    mvn client:build client:run
+```
+mvn javafx:run
+```
 
 ### Run the sample as a native android image
 
-    mvn -Pandroid client:build client:package client:install client:run
+```
+mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package
+```
 
-### Run the sample as a native iOS image
+### Build the sample as a native desktop application
 
-    mvn -Pios client:build client:package client:install client:run
+```
+mvn -Pdesktop gluonfx:build gluonfx:package
+```
 
 ## Google Console
 
