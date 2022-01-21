@@ -12,7 +12,7 @@
         <java.version>11</java.version>
 
         <!-- Dependencies -->
-        <fxgl.version>17</fxgl.version>
+        <fxgl.version>11.17</fxgl.version>
 
         <!-- Plugins -->
         <attach.version>4.0.13</attach.version>
