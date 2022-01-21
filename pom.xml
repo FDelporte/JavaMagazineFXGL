@@ -8,7 +8,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>be.webtechie.fxgl.GameApp</main.class>
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
 
         <!-- Dependencies -->
         <fxgl.version>17</fxgl.version>
@@ -27,6 +27,20 @@
             <groupId>com.github.almasb</groupId>
             <artifactId>fxgl</artifactId>
             <version>${fxgl.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>attach</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>lifecycle</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.gluonhq.attach</groupId>
+                    <artifactId>storage</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
