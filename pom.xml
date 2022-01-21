@@ -8,14 +8,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>be.webtechie.fxgl.GameApp</main.class>
+        <maven.compiler.release>17</maven.compiler.release>
 
+        <!-- Dependencies -->
+        <fxgl.version>17</fxgl.version>
+
+        <!-- Plugins -->
         <attach.version>4.0.9</attach.version>
         <client.plugin.version>0.1.35</client.plugin.version>
-        <fxgl.version>11.16</fxgl.version>
-        <gluonfx.maven.version>1.0.2</gluonfx.maven.version>
-        <java.version>11</java.version>
-        <javafx.plugin.version>0.0.5</javafx.plugin.version>
-        <maven.compiler.release>11</maven.compiler.release>
+        <gluonfx.maven.version>1.0.11</gluonfx.maven.version>
+        <maven.compiler.version>3.9.0</maven.compiler.version>
+        <java.version>17</java.version>
+        <javafx.plugin.version>0.0.8</javafx.plugin.version>
     </properties>
 
     <dependencies>
@@ -31,7 +35,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven.compiler.version}</version>
             </plugin>
 
             <plugin>

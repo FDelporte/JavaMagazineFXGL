@@ -17,9 +17,13 @@ Article: ["Look out, Duke! How to build a Java game with JavaFX and the FXGL lib
 
 > Branch "pi4j"
 
-### Post 3 - "Publishing a JavaFX game to the Google Play Store"
+### Post 3 - "Building a JavaFX game for multiple platforms with GitHub Actions"
+
+For this article all dependencies have been pushed to the latest versions (of beginning of 2022) and Java 17.
 
 > Branch "mobile"
+
+Based on: https://docs.gluonhq.com/#platforms_linux_github_actions
 
 ## Basic Requirements
 
@@ -28,12 +32,23 @@ the [Gluon Client documentation](https://docs.gluonhq.com/client/#_requirements)
 
 ## Quick instructions
 
+Building on PC with GraalVM.
+
 ### GraalVM on Mac
 
 * Use sdkman - https://sdkman.io/
-* Install GraalVM with `sdk install java 21.1.0.r16-grl`
-* Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/21.1.0.r16-grl`
+* Install GraalVM with `sdk install java 21.3.0.r17-grl`
+* Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/21.3.0.r17-grl`
 * Check variable with `echo $GRAALVM_HOME`
+
+### GraalVM on Linux
+
+* Same as Mac
+* Install additional libraries
+
+```shell
+sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+```
 
 ### Run the sample
 
