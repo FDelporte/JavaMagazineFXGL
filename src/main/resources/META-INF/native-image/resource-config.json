@@ -1,55 +1,23 @@
 {
   "resources":{
   "includes":[
-    {
-      "pattern":"\\Qassets/textures/cloud-network.png\\E"
-    }, 
-    {
-      "pattern":"\\Qassets/textures/duke.png\\E"
-    }, 
-    {
-      "pattern":"\\Qassets/textures/sprite_bullet.png\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/languages/english.lang\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/textures/fxgl_default_cursor.png\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/textures/fxgl_icon.png\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/textures/particles/smoke.png\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/textures/particles/trace_horizontal.png\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/ui/css/fxgl_dark.css\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/ui/fonts/Abel-Regular.ttf\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/ui/fonts/Courier-Prime.ttf\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/ui/fonts/TerminalLandMono-Regular.otf\\E"
-    }, 
-    {
-      "pattern":"\\Qfxglassets/ui/fonts/VarelaRound-Regular.ttf\\E"
-    }
+    {"pattern":"\\Qassets/textures/cloud-network.png\\E"}, 
+    {"pattern":"\\Qassets/textures/duke.png\\E"}, 
+    {"pattern":"\\Qassets/textures/sprite_bullet.png\\E"}, 
+    {"pattern":"\\Qfxglassets/languages/english.lang\\E"}, 
+    {"pattern":"\\Qfxglassets/textures/fxgl_default_cursor.png\\E"}, 
+    {"pattern":"\\Qfxglassets/textures/fxgl_icon.png\\E"}, 
+    {"pattern":"\\Qfxglassets/textures/particles/smoke.png\\E"}, 
+    {"pattern":"\\Qfxglassets/textures/particles/trace_horizontal.png\\E"}, 
+    {"pattern":"\\Qfxglassets/ui/css/fxgl_dark.css\\E"}, 
+    {"pattern":"\\Qfxglassets/ui/fonts/Abel-Regular.ttf\\E"}, 
+    {"pattern":"\\Qfxglassets/ui/fonts/Courier-Prime.ttf\\E"}, 
+    {"pattern":"\\Qfxglassets/ui/fonts/VarelaRound-Regular.ttf\\E"}, 
+    {"pattern":"\\Qfxglassets/ui/fonts/lucida_console.ttf\\E"}
   ]},
   "bundles":[
-    {
-      "name":"com.sun.javafx.tk.quantum.QuantumMessagesBundle"
-    }, 
-    {
-      "name":"com/sun/javafx/scene/control/skin/resources/controls"
-    }, 
-    {
-      "name":"sun.awt.resources.awt"
-    }
+    {"name":"com.sun.javafx.tk.quantum.QuantumMessagesBundle"}, 
+    {"name":"com/sun/javafx/scene/control/skin/resources/controls"}, 
+    {"name":"sun.awt.resources.awt"}
   ]
 }

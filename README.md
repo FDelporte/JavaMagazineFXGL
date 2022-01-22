@@ -37,8 +37,8 @@ Building on PC with GraalVM.
 ### GraalVM on Mac
 
 * Use sdkman - https://sdkman.io/
-* Install GraalVM with `sdk install java 21.3.0.r17-grl`
-* Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/21.3.0.r17-grl`
+* Install GraalVM with `sdk install java 21.2.0.r11-grl`
+* Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/21.2.0.r11-grl`
 * Check variable with `echo $GRAALVM_HOME`
 
 ### GraalVM on Linux

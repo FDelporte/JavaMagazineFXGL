@@ -1,11 +1,11 @@
 [
   {
-    "name":"com.almasb.fxgl.core.serialization.Bundle"
+  "name":"com.almasb.fxgl.core.serialization.Bundle"
   },
   {
-    "name":"java.lang.String"
+  "name":"java.util.HashMap"
   },
   {
-    "name":"java.util.HashMap"
+  "name":"java.lang.String"
   }
 ]
