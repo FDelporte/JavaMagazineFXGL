@@ -10,7 +10,6 @@ import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
 
-import java.awt.*;
 import java.util.Map;
 
 import com.almasb.fxgl.entity.SpawnData;
@@ -30,18 +29,12 @@ public class GameApp extends GameApplication {
      */
     private Entity player;
 
-    private static int screenWidth;
-    private static int screenHeight;
-
     /**
      * Main entry point where the application starts.
      *
      * @param args Start-up arguments
      */
     public static void main(String[] args) {
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        screenWidth = (int) screenSize.getWidth();
-        screenHeight = (int) screenSize.getHeight();
         launch(args);
     }
 
@@ -52,8 +45,6 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initSettings(GameSettings settings) {
-        settings.setHeight(screenHeight);
-        settings.setWidth(screenWidth);
         settings.setFullScreenAllowed(true);
         settings.setFullScreenFromStart(true);
         settings.setTitle("Oracle Java Magazine - FXGL");

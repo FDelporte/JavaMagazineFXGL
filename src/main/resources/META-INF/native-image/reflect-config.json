@@ -204,10 +204,6 @@
   "methods":[{"name":"getInstance","parameterTypes":[] }]
 },
 {
-  "name":"com.sun.prism.shader.DrawCircle_Color_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
   "name":"com.sun.prism.shader.DrawEllipse_Color_Loader",
   "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
 },
@@ -220,10 +216,6 @@
   "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
 },
 {
-  "name":"com.sun.prism.shader.FillCircle_Color_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
   "name":"com.sun.prism.shader.FillEllipse_Color_Loader",
   "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
 },
@@ -233,10 +225,6 @@
 },
 {
   "name":"com.sun.prism.shader.FillRoundRect_Color_Loader",
-  "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
-},
-{
-  "name":"com.sun.prism.shader.Mask_TextureSuper_Loader",
   "methods":[{"name":"loadShader","parameterTypes":["com.sun.prism.ps.ShaderFactory","java.io.InputStream"] }]
 },
 {
@@ -398,18 +386,6 @@
   "name":"javax.security.auth.x500.X500Principal",
   "fields":[{"name":"thisX500Name"}],
   "methods":[{"name":"<init>","parameterTypes":["sun.security.x509.X500Name"] }]
-},
-{
-  "name":"sun.awt.X11.XToolkit",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.awt.X11GraphicsEnvironment",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"sun.java2d.marlin.DMarlinRenderingEngine",
-  "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"sun.misc.Unsafe",
