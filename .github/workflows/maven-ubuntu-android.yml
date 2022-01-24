@@ -51,7 +51,7 @@ jobs:
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEYALIAS: ${{ secrets.ANDROID_KEYALIAS }}
           ANDROID_KEYALIAS_PASSWORD: ${{ secrets.ANDROID_KEYALIAS_PASSWORD }}
-          MAVEN_OPTS: -J-Xmx5G
+          MAVEN_OPTS: -Xmx5G
 
       # List the created files so we know which one to copy in the next step
       - name: Show created files
