@@ -147,6 +147,7 @@
                     <releaseConfiguration>
                         <!-- for iOS -->
                         <bundleVersion>${env.GITHUB_RUN_NUMBER}</bundleVersion>
+                        <skipSigning>true</skipSigning>
                         <!-- for Android -->
                         <versionCode>${env.GITHUB_RUN_NUMBER}</versionCode>
                         <providedKeyStorePath>${env.ANDROID_KEYSTOREPATH}</providedKeyStorePath>

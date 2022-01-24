@@ -44,7 +44,7 @@ jobs:
       # Build your project using Maven
       # The desktop profile is used, which means a native build will be created for the host platform (in this case Linux) itself.
       - name: Gluon Build
-        run: mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package
+        run: mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package -J-Xmx5G
         env:
           GRAALVM_HOME: ${{ env.JAVA_HOME }}
           ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}

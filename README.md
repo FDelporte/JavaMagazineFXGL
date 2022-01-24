@@ -68,6 +68,25 @@ mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package
 mvn -Pdesktop gluonfx:build gluonfx:package
 ```
 
+### Build the sample as an Android application
+
+```
+mvn -Pandroid gluonfx:build gluonfx:package
+```
+
+## Debug crashes on Android device
+
+* Connect with USB cable
+* Enable USB debug in Settings
+* Install Android Studio on PC
+* In terminal on PC:
+
+```shell
+$ cd ~/Android/Sdk/platform-tools
+$ ./adb logcat | grep magazine
+
+```
+
 ## Google Console
 
 ### Create a service account
