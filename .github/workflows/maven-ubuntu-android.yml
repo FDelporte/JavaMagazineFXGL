@@ -24,11 +24,11 @@ jobs:
           version: '22.0.0.2'
           java-version: '11'
           components: 'native-image'
-          github-tokeen: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       # Install extra required packaged on top of ubuntu-latest
-      - name: Install libraries
-        run: sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
+      #- name: Install libraries
+      #  run: sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
 
       # Create a staging directory where the binary will be copied into
       - name: Make staging directory
