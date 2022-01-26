@@ -154,6 +154,10 @@
                         <providedKeyStorePassword>${env.ANDROID_KEYSTORE_PASSWORD}</providedKeyStorePassword>
                         <providedKeyAlias>${env.ANDROID_KEYALIAS}</providedKeyAlias>
                         <providedKeyAliasPassword>${env.ANDROID_KEYALIAS_PASSWORD}</providedKeyAliasPassword>
+                        <!-- for Windows -->
+                        <!-- https://github.com/gluonhq/substrate/issues/1085 -->
+                        <appDescription>A demo game with JavaFX and FXGL</appDescription>
+                        <vendor>webtechie.be</vendor>
                     </releaseConfiguration>
                 </configuration>
             </plugin>
