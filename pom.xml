@@ -3,6 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>be.webtechie</groupId>
     <artifactId>javamagazine-fxgl</artifactId>
+    <name>FXGL demo</name>
     <version>0.0.1</version>
 
     <properties>
