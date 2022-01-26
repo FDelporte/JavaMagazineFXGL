@@ -37,8 +37,8 @@ Building on PC with GraalVM.
 ### GraalVM on Mac
 
 * Use sdkman - https://sdkman.io/
-* Install GraalVM with `sdk install java 21.2.0.r11-grl`
-* Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/21.2.0.r11-grl`
+* Install GraalVM with `sdk install java 22.0.0.2.r11-grl`
+* Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/22.0.0.2.r11-grl`
 * Check variable with `echo $GRAALVM_HOME`
 
 ### GraalVM on Linux
@@ -83,7 +83,7 @@ mvn -Pandroid gluonfx:build gluonfx:package
 
 ```shell
 $ cd ~/Android/Sdk/platform-tools
-$ ./adb logcat | grep magazine
+$ ./adbs logcat | grep magazine
 
 ```
 
