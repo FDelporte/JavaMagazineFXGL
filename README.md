@@ -17,9 +17,9 @@ Article: ["Look out, Duke! How to build a Java game with JavaFX and the FXGL lib
 
 > Branch "pi4j"
 
-### Post 3 - "Publishing a JavaFX game to the Google Play Store"
+### Post 3 - "Building a JavaFX game as a native application"
 
-> Branch "mobile"
+> Branch "native"
 
 ## Credits
 
