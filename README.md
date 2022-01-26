@@ -15,7 +15,7 @@ Article: ["Look out, Duke! How to build a Java game with JavaFX and the FXGL lib
 
 ### Post 2 - "Controlling a JavaFX game with a joystick on Raspberry Pi"
 
-Article: [Look out, Duke! Part 2: Control a Java game with a Raspberry Pi](https://blogs.oracle.com/javamagazine/post/look-out-duke-part-2-control-a-java-game-with-a-raspberry-pi-and-a-joystick)
+Article: ["Look out, Duke! Part 2: Control a Java game with a Raspberry Pi"](https://blogs.oracle.com/javamagazine/post/look-out-duke-part-2-control-a-java-game-with-a-raspberry-pi-and-a-joystick)
 
 > Branch "pi4j"
 
