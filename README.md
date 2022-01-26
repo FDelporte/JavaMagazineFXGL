@@ -17,11 +17,11 @@ Article: ["Look out, Duke! How to build a Java game with JavaFX and the FXGL lib
 
 > Branch "pi4j"
 
-### Post 3 - "Building a JavaFX game for multiple platforms with GitHub Actions"
+### Post 3 - "Building a JavaFX game as a native application"
 
-For this article all dependencies have been pushed to the latest versions (of beginning of 2022) and Java 17.
+For this article all dependencies have been pushed to the latest versions (of beginning of 2022).
 
-> Branch "mobile"
+> Branch "native"
 
 Based on: https://docs.gluonhq.com/#platforms_linux_github_actions
 
