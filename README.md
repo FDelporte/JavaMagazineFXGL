@@ -36,17 +36,12 @@ the [Gluon Client documentation](https://docs.gluonhq.com/client/#_requirements)
 
 Building on PC with GraalVM.
 
-### GraalVM on Mac
-
 * Use sdkman - https://sdkman.io/
 * Install GraalVM with `sdk install java 22.0.0.2.r11-grl`
 * Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/22.0.0.2.r11-grl`
 * Check variable with `echo $GRAALVM_HOME`
 
-### GraalVM on Linux
-
-* Same as Mac
-* Install additional libraries
+On Linux extra dependencies are needed: 
 
 ```shell
 sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
@@ -54,25 +49,25 @@ sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev lib
 
 ### Run the sample
 
-```
+```shell
 mvn javafx:run
 ```
 
 ### Run the sample as a native android image
 
-```
+```shell
 mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package
 ```
 
 ### Build the sample as a native desktop application
 
-```
+```shell
 mvn -Pdesktop gluonfx:build gluonfx:package
 ```
 
 ### Build the sample as an Android application
 
-```
+```shell
 mvn -Pandroid gluonfx:build gluonfx:package
 ```
 
@@ -86,7 +81,6 @@ mvn -Pandroid gluonfx:build gluonfx:package
 ```shell
 $ cd ~/Android/Sdk/platform-tools
 $ ./adbs logcat | grep magazine
-
 ```
 
 ## Google Console
