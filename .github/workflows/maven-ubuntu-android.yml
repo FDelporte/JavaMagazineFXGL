@@ -58,7 +58,7 @@ jobs:
         run: ls -l target/gluonfx/aarch64-android/gvm/
 
       - name: Copy native clients to staging
-        run: cp -r target/gluonfx/aarch64-android/gvm/GameApp.apk staging
+        run: cp -r target/gluonfx/aarch64-android/gvm/javamagazine-fxgl.apk staging
 
       - name: Upload
         uses: actions/upload-artifact@v2
