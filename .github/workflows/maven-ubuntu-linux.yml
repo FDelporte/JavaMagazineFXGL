@@ -2,9 +2,9 @@ name: Linux Native
 
 on:
   push:
-    branches: [ mobile ]
+    branches: [ native ]
   pull_request:
-    branches: [ mobile ]
+    branches: [ native ]
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
       - name: Install libraries
         run: sudo apt update | sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
 
-      # New GraalVM GitHub Actions image
+      # GraalVM GitHub Actions image
       - uses: graalvm/setup-graalvm@v1
         with:
           version: '22.0.0.2'
