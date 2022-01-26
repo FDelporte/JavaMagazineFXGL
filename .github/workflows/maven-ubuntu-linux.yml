@@ -47,4 +47,4 @@ jobs:
 
       # Copy the native binary to the staging directory
       - name: Copy native image to staging
-        run: cp -r target/gluonfx/x86_64-linux/javamagazine-fxgl staging
+        run: cp -r target/gluonfx/x86_64-linux/JavaMagazineFXGLDemo staging
