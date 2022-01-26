@@ -51,9 +51,11 @@ jobs:
       - name: Show created files
         run: ls -l target/gluonfx/aarch64-android/gvm/
 
+      # Copy the native binary to the staging directory
       - name: Copy native clients to staging
         run: cp -r target/gluonfx/aarch64-android/gvm/JavaMagazineFXGLDemo.apk staging
 
+      # Upload the staging directory as a build artifact. You will be able to download this after the build finishes
       - name: Upload
         uses: actions/upload-artifact@v2
         with:

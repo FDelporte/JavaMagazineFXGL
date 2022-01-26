@@ -48,3 +48,10 @@ jobs:
       # Copy the native binary to the staging directory
       - name: Copy native image to staging
         run: cp -r target/gluonfx/x86_64-linux/JavaMagazineFXGLDemo staging
+
+      # Upload the staging directory as a build artifact. You will be able to download this after the build finishes
+      - name: Upload
+        uses: actions/upload-artifact@v2
+        with:
+          name: Package
+          path: staging
