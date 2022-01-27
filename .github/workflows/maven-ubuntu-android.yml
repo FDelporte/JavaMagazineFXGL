@@ -18,13 +18,18 @@ jobs:
       # Checkout your code
       - uses: actions/checkout@v2
       
-      # GraalVM GitHub Actions image
-      - uses: graalvm/setup-graalvm@v1
-        with:
-          version: '22.0.0.2'
-          java-version: '11'
-          components: 'native-image'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      # Make sure the latest GraalVM is installed.
+      # after this step env.JAVA_HOME and env.GRAALVM_HOME will point to the GraalVM location
+      - name: Setup GraalVM built by Gluon
+        uses: gluonhq/setup-graalvm@master
+        # set GITHUB_TOKEN to avoid exceeding GitHub's API rate limit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Show the GraalVM/Java version
+        run: echo $JAVA_HOME
+        env:
+          JAVA_HOME: ${{ env.JAVA_HOME }}
 
       # Create a staging directory where the binary will be copied into
       - name: Make staging directory
@@ -42,6 +47,7 @@ jobs:
       - name: Gluon Build
         run: mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package
         env:
+          GRAALVM_HOME: ${{ env.JAVA_HOME }}
           ANDROID_KEYSTOREPATH: ${{ steps.android_keystore_file.outputs.filePath }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
           ANDROID_KEYALIAS: ${{ secrets.ANDROID_KEYALIAS }}

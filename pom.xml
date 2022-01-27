@@ -10,11 +10,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>be.webtechie.fxgl.GameApp</main.class>
         <maven.compiler.release>11</maven.compiler.release>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
 
         <!-- Dependencies -->
         <attach.version>4.0.13</attach.version>
-        <fxgl.version>11.17</fxgl.version>
+        <fxgl.version>17</fxgl.version>
 
         <!-- Plugins -->
         <client.plugin.version>0.1.35</client.plugin.version>

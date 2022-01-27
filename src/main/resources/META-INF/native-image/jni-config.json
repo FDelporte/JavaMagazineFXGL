@@ -1,9 +1,67 @@
 [
 {
-  "name":"com.sun.glass.ui.Screen[]"
+  "name":"[Lcom.sun.glass.ui.Screen;"
 },
 {
-  "name":"com.sun.glass.ui.Size"
+  "name":"[Lcom.sun.javafx.font.FontConfigManager$FontConfigFont;"
+},
+{
+  "name":"com.sun.glass.ui.Clipboard",
+  "methods":[{"name":"contentChanged","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.glass.ui.Cursor",
+  "fields":[{"name":"ptr"}]
+},
+{
+  "name":"com.sun.glass.ui.Pixels",
+  "methods":[{"name":"attachData","parameterTypes":["long"] }]
+},
+{
+  "name":"com.sun.glass.ui.Screen",
+  "methods":[
+    {"name":"<init>","parameterTypes":["long","int","int","int","int","int","int","int","int","int","int","int","int","int","int","int","float","float","float","float"] }, 
+    {"name":"notifySettingsChanged","parameterTypes":[] }
+  ]
+},
+{
+  "name":"com.sun.glass.ui.Size",
+  "methods":[{"name":"<init>","parameterTypes":["int","int"] }]
+},
+{
+  "name":"com.sun.glass.ui.View",
+  "fields":[{"name":"ptr"}],
+  "methods":[
+    {"name":"notifyDragDrop","parameterTypes":["int","int","int","int","int"] }, 
+    {"name":"notifyDragEnter","parameterTypes":["int","int","int","int","int"] }, 
+    {"name":"notifyDragLeave","parameterTypes":[] }, 
+    {"name":"notifyDragOver","parameterTypes":["int","int","int","int","int"] }, 
+    {"name":"notifyInputMethod","parameterTypes":["java.lang.String","int[]","int[]","byte[]","int","int","int"] }, 
+    {"name":"notifyKey","parameterTypes":["int","int","char[]","int"] }, 
+    {"name":"notifyMenu","parameterTypes":["int","int","int","int","boolean"] }, 
+    {"name":"notifyMouse","parameterTypes":["int","int","int","int","int","int","int","boolean","boolean"] }, 
+    {"name":"notifyRepaint","parameterTypes":["int","int","int","int"] }, 
+    {"name":"notifyResize","parameterTypes":["int","int"] }, 
+    {"name":"notifyScroll","parameterTypes":["int","int","int","int","double","double","int","int","int","int","int","double","double"] }, 
+    {"name":"notifyView","parameterTypes":["int"] }
+  ]
+},
+{
+  "name":"com.sun.glass.ui.Window",
+  "fields":[{"name":"ptr"}],
+  "methods":[
+    {"name":"isEnabled","parameterTypes":[] }, 
+    {"name":"notifyClose","parameterTypes":[] }, 
+    {"name":"notifyDelegatePtr","parameterTypes":["long"] }, 
+    {"name":"notifyDestroy","parameterTypes":[] }, 
+    {"name":"notifyFocus","parameterTypes":["int"] }, 
+    {"name":"notifyFocusDisabled","parameterTypes":[] }, 
+    {"name":"notifyFocusUngrab","parameterTypes":[] }, 
+    {"name":"notifyLevelChanged","parameterTypes":["int"] }, 
+    {"name":"notifyMove","parameterTypes":["int","int"] }, 
+    {"name":"notifyMoveToAnotherScreen","parameterTypes":["com.sun.glass.ui.Screen"] }, 
+    {"name":"notifyResize","parameterTypes":["int","int","int"] }
+  ]
 },
 {
   "name":"com.sun.javafx.font.FontConfigManager$FcCompFont",
@@ -22,9 +80,6 @@
     {"name":"styleStr"}
   ],
   "methods":[{"name":"<init>","parameterTypes":[] }]
-},
-{
-  "name":"com.sun.javafx.font.FontConfigManager$FontConfigFont[]"
 },
 {
   "name":"com.sun.javafx.font.freetype.FT_Bitmap",
@@ -81,6 +136,10 @@
   "methods":[{"name":"<init>","parameterTypes":["int","byte[]","int","float[]","int"] }]
 },
 {
+  "name":"java.lang.Boolean",
+  "methods":[{"name":"getBoolean","parameterTypes":["java.lang.String"] }]
+},
+{
   "name":"java.lang.ClassLoader",
   "methods":[
     {"name":"getPlatformClassLoader","parameterTypes":[] }, 
@@ -88,14 +147,31 @@
   ]
 },
 {
+  "name":"java.lang.Iterable",
+  "methods":[{"name":"iterator","parameterTypes":[] }]
+},
+{
+  "name":"java.lang.Runnable",
+  "methods":[{"name":"run","parameterTypes":[] }]
+},
+{
   "name":"java.lang.String",
   "methods":[{"name":"toLowerCase","parameterTypes":["java.util.Locale"] }]
 },
 {
+  "name":"java.nio.ByteBuffer",
+  "methods":[
+    {"name":"array","parameterTypes":[] }, 
+    {"name":"wrap","parameterTypes":["byte[]"] }
+  ]
+},
+{
   "name":"java.util.ArrayList",
   "methods":[
+    {"name":"<init>","parameterTypes":[] }, 
     {"name":"<init>","parameterTypes":["int"] }, 
-    {"name":"add","parameterTypes":["java.lang.Object"] }
+    {"name":"add","parameterTypes":["java.lang.Object"] }, 
+    {"name":"get","parameterTypes":["int"] }
   ]
 },
 {
@@ -107,10 +183,37 @@
   ]
 },
 {
+  "name":"java.util.HashSet",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"java.util.Iterator",
+  "methods":[
+    {"name":"hasNext","parameterTypes":[] }, 
+    {"name":"next","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.util.Map",
+  "methods":[
+    {"name":"containsKey","parameterTypes":["java.lang.Object"] }, 
+    {"name":"get","parameterTypes":["java.lang.Object"] }, 
+    {"name":"keySet","parameterTypes":[] }
+  ]
+},
+{
+  "name":"java.util.Set",
+  "methods":[
+    {"name":"add","parameterTypes":["java.lang.Object"] }, 
+    {"name":"size","parameterTypes":[] }, 
+    {"name":"toArray","parameterTypes":["java.lang.Object[]"] }
+  ]
+},
+{
   "name":"jdk.internal.loader.ClassLoaders$PlatformClassLoader"
 },
 {
-  "name":"org.graalvm.nativebridge.jni.JNIExceptionWrapperEntryPoints",
+  "name":"org.graalvm.jniutils.JNIExceptionWrapperEntryPoints",
   "methods":[{"name":"getClassName","parameterTypes":["java.lang.Class"] }]
 }
 ]

@@ -37,9 +37,18 @@ the [Gluon Client documentation](https://docs.gluonhq.com/client/#_requirements)
 Building on PC with GraalVM.
 
 * Use sdkman - https://sdkman.io/
-* Install GraalVM with `sdk install java 22.0.0.2.r11-grl`
-* Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/22.0.0.2.r11-grl`
+* Install GraalVM with `sdk install java 22.0.0.2.r17-grl`
+* Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/22.0.0.2.r17-grl`
 * Check variable with `echo $GRAALVM_HOME`
+
+GraalVM needs some settings files that can be auto-generated with:
+
+```shell
+$ mvn gluonfx:runagent
+```
+
+The generated files can be found in `src/resources/META-INF/native-image/`.
+
 
 On Linux extra dependencies are needed: 
 
@@ -80,7 +89,10 @@ mvn -Pandroid gluonfx:build gluonfx:package
 
 ```shell
 $ cd ~/Android/Sdk/platform-tools
-$ ./adbs logcat | grep magazine
+$ ./adb logcat | grep magazine
+
+$ ~/Android/Sdk/platform-tools/adb install JavaMagazineFXGLDemo.apk
+$ ~/Android/Sdk/platform-tools/adb logcat | grep magazine
 ```
 
 ## Google Console

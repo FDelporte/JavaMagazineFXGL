@@ -1,11 +1,30 @@
 [
 {
+  "name":"[B"
+},
+{
+  "name":"[Ljava.lang.Object;"
+},
+{
+  "name":"[Ljava.lang.String;"
+},
+{
+  "name":"[Lsun.security.pkcs.SignerInfo;"
+},
+{
   "name":"be.webtechie.fxgl.GameApp",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
   "name":"be.webtechie.fxgl.GameFactory",
-  "allDeclaredMethods":true
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"newBullet","parameterTypes":["com.almasb.fxgl.entity.SpawnData"] }, 
+    {"name":"newCloud","parameterTypes":["com.almasb.fxgl.entity.SpawnData"] }, 
+    {"name":"newDuke","parameterTypes":["com.almasb.fxgl.entity.SpawnData"] }, 
+    {"name":"spawnBackground","parameterTypes":["com.almasb.fxgl.entity.SpawnData"] }, 
+    {"name":"spawnCenter","parameterTypes":["com.almasb.fxgl.entity.SpawnData"] }
+  ]
 },
 {
   "name":"be.webtechie.fxgl.component.CloudComponent",
@@ -14,9 +33,6 @@
 {
   "name":"be.webtechie.fxgl.component.PlayerComponent",
   "allDeclaredFields":true
-},
-{
-  "name":"byte[]"
 },
 {
   "name":"com.almasb.fxgl.achievement.AchievementService",
@@ -34,7 +50,101 @@
 },
 {
   "name":"com.almasb.fxgl.app.ReadOnlyGameSettings",
-  "allDeclaredMethods":true
+  "queryAllDeclaredMethods":true,
+  "methods":[
+    {"name":"actualHeightProperty","parameterTypes":[] }, 
+    {"name":"actualWidthProperty","parameterTypes":[] }, 
+    {"name":"devBBoxColorProperty","parameterTypes":[] }, 
+    {"name":"devEnableDebugCameraProperty","parameterTypes":[] }, 
+    {"name":"devSensorColorProperty","parameterTypes":[] }, 
+    {"name":"devShowBBoxProperty","parameterTypes":[] }, 
+    {"name":"devShowPositionProperty","parameterTypes":[] }, 
+    {"name":"gameDifficultyProperty","parameterTypes":[] }, 
+    {"name":"getAchievements","parameterTypes":[] }, 
+    {"name":"getActualHeight","parameterTypes":[] }, 
+    {"name":"getActualWidth","parameterTypes":[] }, 
+    {"name":"getAppIcon","parameterTypes":[] }, 
+    {"name":"getApplicationMode","parameterTypes":[] }, 
+    {"name":"getCSSList","parameterTypes":[] }, 
+    {"name":"getCollisionDetectionStrategy","parameterTypes":[] }, 
+    {"name":"getConfigClass","parameterTypes":[] }, 
+    {"name":"getCredits","parameterTypes":[] }, 
+    {"name":"getDefaultCursor","parameterTypes":[] }, 
+    {"name":"getEnabledMenuItems","parameterTypes":[] }, 
+    {"name":"getEngineServices","parameterTypes":[] }, 
+    {"name":"getFontGame","parameterTypes":[] }, 
+    {"name":"getFontMono","parameterTypes":[] }, 
+    {"name":"getFontText","parameterTypes":[] }, 
+    {"name":"getFontUI","parameterTypes":[] }, 
+    {"name":"getFullScreen","parameterTypes":[] }, 
+    {"name":"getGameDifficulty","parameterTypes":[] }, 
+    {"name":"getGlobalMusicVolume","parameterTypes":[] }, 
+    {"name":"getGlobalSoundVolume","parameterTypes":[] }, 
+    {"name":"getHeight","parameterTypes":[] }, 
+    {"name":"getLanguage","parameterTypes":[] }, 
+    {"name":"getMenuKey","parameterTypes":[] }, 
+    {"name":"getMouseSensitivity","parameterTypes":[] }, 
+    {"name":"getNotificationViewClass","parameterTypes":[] }, 
+    {"name":"getPixelsPerMeter","parameterTypes":[] }, 
+    {"name":"getPlatform","parameterTypes":[] }, 
+    {"name":"getProfileDir","parameterTypes":[] }, 
+    {"name":"getProfileName","parameterTypes":[] }, 
+    {"name":"getRandomSeed","parameterTypes":[] }, 
+    {"name":"getRuntimeInfo","parameterTypes":[] }, 
+    {"name":"getSaveFileExt","parameterTypes":[] }, 
+    {"name":"getScaledHeightProp$fxgl","parameterTypes":[] }, 
+    {"name":"getScaledWidthProp$fxgl","parameterTypes":[] }, 
+    {"name":"getSceneFactory","parameterTypes":[] }, 
+    {"name":"getSecondsIn24h","parameterTypes":[] }, 
+    {"name":"getSoundMenuBack","parameterTypes":[] }, 
+    {"name":"getSoundMenuPress","parameterTypes":[] }, 
+    {"name":"getSoundMenuSelect","parameterTypes":[] }, 
+    {"name":"getSoundNotification","parameterTypes":[] }, 
+    {"name":"getStageStyle","parameterTypes":[] }, 
+    {"name":"getSupportedLanguages","parameterTypes":[] }, 
+    {"name":"getTicksPerSecond","parameterTypes":[] }, 
+    {"name":"getTitle","parameterTypes":[] }, 
+    {"name":"getUrlGithub","parameterTypes":[] }, 
+    {"name":"getUrlLeaderboard","parameterTypes":[] }, 
+    {"name":"getUrlPOM","parameterTypes":[] }, 
+    {"name":"getUserAppClass","parameterTypes":[] }, 
+    {"name":"getVersion","parameterTypes":[] }, 
+    {"name":"getVersionCheckDays","parameterTypes":[] }, 
+    {"name":"getWidth","parameterTypes":[] }, 
+    {"name":"globalMusicVolumeProperty","parameterTypes":[] }, 
+    {"name":"globalSoundVolumeProperty","parameterTypes":[] }, 
+    {"name":"is3D","parameterTypes":[] }, 
+    {"name":"isAndroid","parameterTypes":[] }, 
+    {"name":"isBrowser","parameterTypes":[] }, 
+    {"name":"isClickFeedbackEnabled","parameterTypes":[] }, 
+    {"name":"isCloseConfirmation","parameterTypes":[] }, 
+    {"name":"isDesktop","parameterTypes":[] }, 
+    {"name":"isDeveloperMenuEnabled","parameterTypes":[] }, 
+    {"name":"isEmbedded","parameterTypes":[] }, 
+    {"name":"isEntityPreloadEnabled","parameterTypes":[] }, 
+    {"name":"isExperimentalTiledLargeMap","parameterTypes":[] }, 
+    {"name":"isFileSystemWriteAllowed","parameterTypes":[] }, 
+    {"name":"isFullScreenAllowed","parameterTypes":[] }, 
+    {"name":"isFullScreenFromStart","parameterTypes":[] }, 
+    {"name":"isGameMenuEnabled","parameterTypes":[] }, 
+    {"name":"isIOS","parameterTypes":[] }, 
+    {"name":"isIntroEnabled","parameterTypes":[] }, 
+    {"name":"isLinux","parameterTypes":[] }, 
+    {"name":"isMac","parameterTypes":[] }, 
+    {"name":"isMainMenuEnabled","parameterTypes":[] }, 
+    {"name":"isManualResizeEnabled","parameterTypes":[] }, 
+    {"name":"isMobile","parameterTypes":[] }, 
+    {"name":"isNative","parameterTypes":[] }, 
+    {"name":"isPauseMusicWhenMinimized","parameterTypes":[] }, 
+    {"name":"isPreserveResizeRatio","parameterTypes":[] }, 
+    {"name":"isProfilingEnabled","parameterTypes":[] }, 
+    {"name":"isScaleAffectedOnResize","parameterTypes":[] }, 
+    {"name":"isSingleStep","parameterTypes":[] }, 
+    {"name":"isUserProfileEnabled","parameterTypes":[] }, 
+    {"name":"isWindows","parameterTypes":[] }, 
+    {"name":"prefHeightProperty","parameterTypes":[] }, 
+    {"name":"prefWidthProperty","parameterTypes":[] }
+  ]
 },
 {
   "name":"com.almasb.fxgl.app.services.FXGLAssetLoaderService",
@@ -161,11 +271,31 @@
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
+  "name":"com.sun.crypto.provider.ARCFOURCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.ChaCha20Cipher$ChaCha20Poly1305",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.DESCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.DESedeCipher",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
   "name":"com.sun.crypto.provider.DHParameters",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
-  "name":"com.sun.crypto.provider.HmacCore$HmacSHA256",
+  "name":"com.sun.crypto.provider.GaloisCounterMode$AESGCM",
+  "methods":[{"name":"<init>","parameterTypes":[] }]
+},
+{
+  "name":"com.sun.crypto.provider.HmacCore$HmacSHA384",
   "methods":[{"name":"<init>","parameterTypes":[] }]
 },
 {
@@ -276,13 +406,7 @@
   "methods":[{"name":"isIdeographic","parameterTypes":["int"] }]
 },
 {
-  "name":"java.lang.Object[]"
-},
-{
   "name":"java.lang.String"
-},
-{
-  "name":"java.lang.String[]"
 },
 {
   "name":"java.nio.ByteBuffer",
@@ -297,9 +421,6 @@
 },
 {
   "name":"java.security.KeyStoreSpi"
-},
-{
-  "name":"java.security.MessageDigestSpi"
 },
 {
   "name":"java.security.SecureRandomParameters"
@@ -390,9 +511,6 @@
 {
   "name":"sun.misc.Unsafe",
   "fields":[{"name":"theUnsafe"}]
-},
-{
-  "name":"sun.security.pkcs.SignerInfo[]"
 },
 {
   "name":"sun.security.pkcs12.PKCS12KeyStore",
