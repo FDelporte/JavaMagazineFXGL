@@ -14,7 +14,7 @@
 
         <!-- Dependencies -->
         <attach.version>4.0.13</attach.version>
-        <fxgl.version>17</fxgl.version>
+        <fxgl.version>17+dev-SNAPSHOT</fxgl.version>
 
         <!-- Plugins -->
         <client.plugin.version>0.1.35</client.plugin.version>
@@ -28,22 +28,15 @@
             <groupId>com.github.almasb</groupId>
             <artifactId>fxgl</artifactId>
             <version>${fxgl.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.gluonhq.attach</groupId>
-                    <artifactId>attach</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.gluonhq.attach</groupId>
-                    <artifactId>lifecycle</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.gluonhq.attach</groupId>
-                    <artifactId>storage</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>oss.sonatype.org-snapshot</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
 
     <build>
         <plugins>
@@ -74,13 +67,13 @@
                         <list>.*\\.wav$</list>
                         <list>.*\\.mp3$</list>
                     </resourcesList>
+                    <!--
                     <reflectionList>
                         <list>com.almasb.fxgl.app.GameApplication</list>
                         <list>com.almasb.fxgl.app.FXGLApplication</list>
                         <list>com.almasb.fxgl.app.ReadOnlyGameSettings</list>
                         <list>com.almasb.fxgl.app.GameSettings</list>
 
-                        <!-- Engine services -->
                         <list>com.almasb.fxgl.app.services.FXGLDialogService</list>
                         <list>com.almasb.fxgl.app.services.IOTaskExecutorService</list>
                         <list>com.almasb.fxgl.app.services.SystemBundleService</list>
@@ -106,7 +99,6 @@
                         <list>com.almasb.fxgl.core.math.Vec2</list>
                         <list>com.almasb.fxgl.particle.Particle</list>
 
-                        <!-- Components -->
                         <list>com.almasb.fxgl.entity.components.BoundingBoxComponent</list>
                         <list>com.almasb.fxgl.entity.components.CollidableComponent</list>
                         <list>com.almasb.fxgl.entity.components.IDComponent</list>
@@ -124,26 +116,28 @@
                         <list>com.almasb.fxgl.dsl.components.ProjectileComponent</list>
                         <list>com.almasb.fxgl.dsl.components.AutoRotationComponent</list>
 
-                        <!--     Custom components                  -->
                         <list>be.webtechie.fxgl.GameApp</list>
                         <list>be.webtechie.fxgl.GameFactory</list>
                         <list>be.webtechie.fxgl.component.CloudComponent</list>
                         <list>be.webtechie.fxgl.component.PlayerComponent</list>
                     </reflectionList>
+                    -->
                     <verbose>true</verbose>
                     <target>${client.target}</target>
                     <mainClass>${main.class}</mainClass>
                     <attachList>
                         <list>audio</list>
+                        <list>storage</list>
+                        <list>lifecycle</list>
+                        <!--
                         <list>util</list>
                         <list>device</list>
                         <list>display</list>
-                        <list>lifecycle</list>
                         <list>magnetometer</list>
                         <list>orientation</list>
                         <list>statusbar</list>
-                        <list>storage</list>
                         <list>vibration</list>
+                        -->
                     </attachList>
                     <releaseConfiguration>
                         <!-- for iOS -->
