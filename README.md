@@ -49,8 +49,7 @@ $ mvn gluonfx:runagent
 
 The generated files can be found in `src/resources/META-INF/native-image/`.
 
-
-On Linux extra dependencies are needed: 
+On Linux extra dependencies are needed:
 
 ```shell
 sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev

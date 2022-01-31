@@ -13,13 +13,13 @@ jobs:
       # Checkout your code
       - uses: actions/checkout@v2
 
-      # GraalVM GitHub Actions image
-      - uses: graalvm/setup-graalvm@v1
-        with:
-          version: '22.0.0.2'
-          java-version: '11'
-          components: 'native-image'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+      # Make sure the latest GraalVM is installed.
+      # after this step env.JAVA_HOME and env.GRAALVM_HOME will point to the GraalVM location
+      - name: Setup GraalVM built by Gluon
+        uses: gluonhq/setup-graalvm@master
+        # set GITHUB_TOKEN to avoid exceeding GitHub's API rate limit
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # Create a staging directory where the binary will be copied into
       - name: Make staging directory
