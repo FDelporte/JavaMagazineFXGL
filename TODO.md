@@ -1,5 +1,6 @@
 https://support.gluonhq.com/browse/SUPFHNW-7
 
+
 # Java version
 
 * 11 build was OK with GraalVM 22
