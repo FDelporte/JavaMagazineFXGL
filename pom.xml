@@ -18,7 +18,7 @@
 
         <!-- Plugins -->
         <client.plugin.version>0.1.35</client.plugin.version>
-        <gluonfx.maven.version>1.0.11</gluonfx.maven.version>
+        <gluonfx.maven.version>1.0.12</gluonfx.maven.version>
         <maven.compiler.version>3.9.0</maven.compiler.version>
         <javafx.plugin.version>0.0.8</javafx.plugin.version>
     </properties>
@@ -151,7 +151,7 @@
                         <providedKeyAliasPassword>${env.ANDROID_KEYALIAS_PASSWORD}</providedKeyAliasPassword>
                         <!-- for Windows -->
                         <!-- https://github.com/gluonhq/substrate/issues/1085 -->
-                        <appDescription>A demo game with JavaFX and FXGL</appDescription>
+                        <description>A demo game with JavaFX and FXGL</description>
                         <vendor>webtechie.be</vendor>
                     </releaseConfiguration>
                 </configuration>

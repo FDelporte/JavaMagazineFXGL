@@ -34,12 +34,40 @@ the [Gluon Client documentation](https://docs.gluonhq.com/client/#_requirements)
 
 ## Quick instructions
 
+### GraalVM
+
 Building on PC with GraalVM.
+
+GraalVM can be installed with SDKMAN with the following commands, but this is not the ideal approach as Gluon is
+providing a version which is based on the latest GraalVM with some modifications to improve the build process of JavaFX
+applications.
 
 * Use sdkman - https://sdkman.io/
 * Install GraalVM with `sdk install java 22.0.0.2.r17-grl`
 * Set environment variable with `export GRAALVM_HOME=${SDKMAN_CANDIDATES_DIR}/java/22.0.0.2.r17-grl`
 * Check variable with `echo $GRAALVM_HOME`
+
+### GraalVM by Gluon for JavaFX
+
+Check for the download link for your platform on https://github.com/gluonhq/graal/releases/tag/gluon-22.0.0.3-Final
+
+#### On MacOS
+
+```shell 
+brew install wget
+cd ~/Downloads
+wget https://github.com/gluonhq/graal/releases/download/gluon-22.0.0.3-Final/graalvm-svm-java17-darwin-gluon-22.0.0.3-Final.zip
+unzip graalvm-svm-java17-darwin-gluon-22.0.0.3-Final.zip
+export GRAALVM_HOME=~/Downloads/graalvm-svm-java17-darwin-gluon-22.0.0.3-Final
+```
+
+#### On Linux
+
+```shell 
+cd ~/Downloads
+wget https://github.com/gluonhq/graal/releases/download/gluon-22.0.0.3-Final/graalvm-svm-java17-linux-gluon-22.0.0.3-Final.zip
+unzip graalvm-svm-java17-linux-gluon-22.0.0.3-Final.zip
+```
 
 GraalVM needs some settings files that can be auto-generated with:
 
