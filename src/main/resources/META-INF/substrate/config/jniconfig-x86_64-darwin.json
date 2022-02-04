@@ -1,0 +1,11 @@
+[
+  {
+    "name": "com.sun.glass.ui.mac.MacAccessible",
+    "methods": [
+      {
+        "name": "accessibilityAttributeNames",
+        "parameterTypes": []
+      }
+    ]
+  }
+]
