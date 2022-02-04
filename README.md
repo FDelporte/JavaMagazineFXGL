@@ -58,7 +58,7 @@ brew install wget
 cd ~/Downloads
 wget https://github.com/gluonhq/graal/releases/download/gluon-22.0.0.3-Final/graalvm-svm-java17-darwin-gluon-22.0.0.3-Final.zip
 unzip graalvm-svm-java17-darwin-gluon-22.0.0.3-Final.zip
-export GRAALVM_HOME=~/Downloads/graalvm-svm-java17-darwin-gluon-22.0.0.3-Final
+export GRAALVM_HOME=~/Downloads/graalvm-svm-java17-darwin-gluon-22.0.0.3-Final/Contents/Home
 ```
 
 #### On Linux
@@ -122,8 +122,7 @@ mvn -Pandroid gluonfx:build gluonfx:package
 * In terminal on PC:
 
 ```shell
-$ cd ~/Android/Sdk/platform-tools
-$ ./adb logcat | grep magazine
+$ ~/Android/Sdk/platform-tools/adb logcat | grep magazine
 
 $ ~/Android/Sdk/platform-tools/adb install JavaMagazineFXGLDemo.apk
 $ ~/Android/Sdk/platform-tools/adb logcat | grep magazine
