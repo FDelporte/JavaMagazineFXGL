@@ -34,9 +34,9 @@ the [Gluon Client documentation](https://docs.gluonhq.com/client/#_requirements)
 
 ## Quick instructions
 
-### GraalVM
-
 Building on PC with GraalVM.
+
+### GraalVM via SDKMAN
 
 GraalVM can be installed with SDKMAN with the following commands, but this is not the ideal approach as Gluon is
 providing a version which is based on the latest GraalVM with some modifications to improve the build process of JavaFX
@@ -67,7 +67,10 @@ export GRAALVM_HOME=~/Downloads/graalvm-svm-java17-darwin-gluon-22.0.0.3-Final
 cd ~/Downloads
 wget https://github.com/gluonhq/graal/releases/download/gluon-22.0.0.3-Final/graalvm-svm-java17-linux-gluon-22.0.0.3-Final.zip
 unzip graalvm-svm-java17-linux-gluon-22.0.0.3-Final.zip
+export GRAALVM_HOME=~/Downloads/graalvm-svm-java17-linux-gluon-22.0.0.3-Final
 ```
+
+### Configurations used to compile to native
 
 GraalVM needs some settings files that can be auto-generated with:
 
@@ -77,31 +80,35 @@ $ mvn gluonfx:runagent
 
 The generated files can be found in `src/resources/META-INF/native-image/`.
 
+### Dependencies on Linux
+
 On Linux extra dependencies are needed:
 
 ```shell
 sudo apt install libasound2-dev libavcodec-dev libavformat-dev libavutil-dev libgl-dev libgtk-3-dev libpango1.0-dev libxtst-dev
 ```
 
-### Run the sample
+### Maven build steps
+
+#### Run the sample
 
 ```shell
 mvn javafx:run
 ```
 
-### Run the sample as a native android image
+#### Run the sample as a native android image
 
 ```shell
 mvn -DconsoleProcessLog=true -Pandroid gluonfx:build gluonfx:package
 ```
 
-### Build the sample as a native desktop application
+#### Build the sample as a native desktop application
 
 ```shell
 mvn -Pdesktop gluonfx:build gluonfx:package
 ```
 
-### Build the sample as an Android application
+#### Build the sample as an Android application
 
 ```shell
 mvn -Pandroid gluonfx:build gluonfx:package
