@@ -18,7 +18,7 @@
 
         <!-- Plugins -->
         <client.plugin.version>0.1.35</client.plugin.version>
-        <gluonfx.maven.version>1.0.12</gluonfx.maven.version>
+        <gluonfx.maven.version>1.0.13-SNAPSHOT</gluonfx.maven.version>
         <maven.compiler.version>3.9.0</maven.compiler.version>
         <javafx.plugin.version>0.0.8</javafx.plugin.version>
     </properties>
@@ -37,6 +37,13 @@
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
         </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>Snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </pluginRepository>
+    </pluginRepositories>
 
     <build>
         <plugins>
@@ -61,6 +68,9 @@
                 <version>${gluonfx.maven.version}</version>
                 <configuration>
                     <nativeImageArgs>--allow-incomplete-classpath</nativeImageArgs>
+                    <linkerArgs>
+                        <arg>/android/missing_symbols.o</arg>
+                    </linkerArgs>
                     <resourcesList>
                         <list>.*\\.lang$</list>
                         <list>.*\\.tmx$</list>

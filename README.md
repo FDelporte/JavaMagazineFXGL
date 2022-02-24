@@ -128,6 +128,63 @@ $ ~/Android/Sdk/platform-tools/adb install JavaMagazineFXGLDemo.apk
 $ ~/Android/Sdk/platform-tools/adb logcat | grep magazine
 ```
 
+### Temporary fix for Android
+
+Problem at startup: `cannot locate symbol "JNI_OnLoad_javajpeg"`
+
+which is related to the issue https://github.com/gluonhq/substrate/pull/1000, about missing awt symbols.
+
+While we haven't solved that yet, we have just integrated a PR that will help you solve this at least until we have a
+better approach. Create a simple c file (i.e. missing_symbols.c) that contains the dummy methods for the missing
+symbols, following this https://github.com/gluonhq/substrate/pull/1000/files.
+
+```c
+# include <stdlib.h>
+
+void JNI_OnLoad_javajpeg() { 
+    fprintf(stderr, "We should never reach here (JNI_OnLoad_javajpeg)\n"); 
+} 
+
+...
+```
+
+Compile it for Android:
+
+```shell
+$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -c -target aarch64-linux-android -I. missing_symbols.c
+```
+
+See that it creates `missing_symbols.o`
+
+Using the 1.0.13-SNAPSHOT version, add it to the plugin, and add the Sonatype repo for the snapshot:
+
+```xml
+
+<pluginRepositories>
+    <pluginRepository>
+        <id>Snapshots</id>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </pluginRepository>
+</pluginRepositories>
+```
+
+```xml
+
+<plugin>
+    <groupId>com.gluonhq</groupId>
+    <artifactId>gluonfx-maven-plugin</artifactId>
+    <version>${gluonfx.maven.version}</version>
+    <configuration>
+        <linkerArgs>
+            <arg>/path/to/symbols_awt.o</arg>
+        </linkerArgs>
+        ...
+    </configuration>
+</plugin>
+```
+
+Then build, package and install as usual, now it should work (I've got it running on my Android device...)
+
 ## Google Console
 
 ### Create a service account
