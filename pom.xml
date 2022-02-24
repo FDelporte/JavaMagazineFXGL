@@ -69,7 +69,7 @@
                 <configuration>
                     <nativeImageArgs>--allow-incomplete-classpath</nativeImageArgs>
                     <linkerArgs>
-                        <arg>/android/missing_symbols.o</arg>
+                        <arg>./android/missing_symbols.o</arg>
                     </linkerArgs>
                     <resourcesList>
                         <list>.*\\.lang$</list>
@@ -77,61 +77,6 @@
                         <list>.*\\.wav$</list>
                         <list>.*\\.mp3$</list>
                     </resourcesList>
-                    <!--
-                    <reflectionList>
-                        <list>com.almasb.fxgl.app.GameApplication</list>
-                        <list>com.almasb.fxgl.app.FXGLApplication</list>
-                        <list>com.almasb.fxgl.app.ReadOnlyGameSettings</list>
-                        <list>com.almasb.fxgl.app.GameSettings</list>
-
-                        <list>com.almasb.fxgl.app.services.FXGLDialogService</list>
-                        <list>com.almasb.fxgl.app.services.IOTaskExecutorService</list>
-                        <list>com.almasb.fxgl.app.services.SystemBundleService</list>
-                        <list>com.almasb.fxgl.app.services.UpdaterService</list>
-                        <list>com.almasb.fxgl.app.services.FXGLAssetLoaderService</list>
-                        <list>com.almasb.fxgl.core.asset.AssetLoaderService</list>
-                        <list>com.almasb.fxgl.cutscene.CutsceneService</list>
-                        <list>com.almasb.fxgl.dev.DevService</list>
-                        <list>com.almasb.fxgl.dev.profiling.ProfilerService</list>
-                        <list>com.almasb.fxgl.event.EventBusService</list>
-                        <list>com.almasb.fxgl.io.FileSystemService</list>
-                        <list>com.almasb.fxgl.localization.LocalizationService</list>
-                        <list>com.almasb.fxgl.minigames.MiniGameService</list>
-                        <list>com.almasb.fxgl.net.NetService</list>
-                        <list>com.almasb.fxgl.profile.SaveLoadService</list>
-                        <list>com.almasb.fxgl.ui.FXGLDialogFactoryServiceProvider</list>
-                        <list>com.almasb.fxgl.ui.FXGLUIFactoryServiceProvider</list>
-                        <list>com.almasb.fxgl.app.FXGLApplication$GameApplicationService</list>
-                        <list>com.almasb.fxgl.audio.AudioPlayer</list>
-                        <list>com.almasb.fxgl.notification.impl.NotificationServiceProvider</list>
-                        <list>com.almasb.fxgl.notification.view.XboxNotificationView</list>
-                        <list>com.almasb.fxgl.achievement.AchievementService</list>
-                        <list>com.almasb.fxgl.core.math.Vec2</list>
-                        <list>com.almasb.fxgl.particle.Particle</list>
-
-                        <list>com.almasb.fxgl.entity.components.BoundingBoxComponent</list>
-                        <list>com.almasb.fxgl.entity.components.CollidableComponent</list>
-                        <list>com.almasb.fxgl.entity.components.IDComponent</list>
-                        <list>com.almasb.fxgl.entity.components.IrremovableComponent</list>
-                        <list>com.almasb.fxgl.entity.components.TimeComponent</list>
-                        <list>com.almasb.fxgl.entity.components.TransformComponent</list>
-                        <list>com.almasb.fxgl.entity.components.TypeComponent</list>
-                        <list>com.almasb.fxgl.entity.components.ViewComponent</list>
-                        <list>com.almasb.fxgl.particle.ParticleComponent</list>
-                        <list>com.almasb.fxgl.physics.PhysicsComponent</list>
-                        <list>com.almasb.fxgl.dsl.components.EffectComponent</list>
-                        <list>com.almasb.fxgl.dsl.components.LiftComponent</list>
-                        <list>com.almasb.fxgl.dsl.components.OffscreenCleanComponent</list>
-                        <list>com.almasb.fxgl.dsl.components.OffscreenPauseComponent</list>
-                        <list>com.almasb.fxgl.dsl.components.ProjectileComponent</list>
-                        <list>com.almasb.fxgl.dsl.components.AutoRotationComponent</list>
-
-                        <list>be.webtechie.fxgl.GameApp</list>
-                        <list>be.webtechie.fxgl.GameFactory</list>
-                        <list>be.webtechie.fxgl.component.CloudComponent</list>
-                        <list>be.webtechie.fxgl.component.PlayerComponent</list>
-                    </reflectionList>
-                    -->
                     <verbose>true</verbose>
                     <target>${client.target}</target>
                     <mainClass>${main.class}</mainClass>
@@ -139,15 +84,6 @@
                         <list>audio</list>
                         <list>storage</list>
                         <list>lifecycle</list>
-                        <!--
-                        <list>util</list>
-                        <list>device</list>
-                        <list>display</list>
-                        <list>magnetometer</list>
-                        <list>orientation</list>
-                        <list>statusbar</list>
-                        <list>vibration</list>
-                        -->
                     </attachList>
                     <releaseConfiguration>
                         <!-- for iOS -->
