@@ -130,9 +130,7 @@ $ ~/Android/Sdk/platform-tools/adb logcat | grep magazine
 
 ### Temporary fix for Android
 
-Problem at startup: `cannot locate symbol "JNI_OnLoad_javajpeg"`
-
-which is related to the issue https://github.com/gluonhq/substrate/pull/1000, about missing awt symbols.
+Problem at startup: `cannot locate symbol "JNI_OnLoad_javajpeg"` which is related to the issue https://github.com/gluonhq/substrate/pull/1000, about missing awt symbols.
 
 While we haven't solved that yet, we have just integrated a PR that will help you solve this at least until we have a
 better approach. Create a simple c file (i.e. missing_symbols.c) that contains the dummy methods for the missing
@@ -148,10 +146,14 @@ void JNI_OnLoad_javajpeg() {
 ...
 ```
 
-Compile it for Android:
+Compile it for Android with Android ND (https://developer.android.com/studio/projects/install-ndk). To install CMake and the default NDK in Android Studio, do the following:
+
+* With a project open, click Tools > SDK Manager.
+* Click the SDK Tools tab.
+* Select the NDK (Side by side) and CMake checkboxes.
 
 ```shell
-$ANDROID_NDK/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -c -target aarch64-linux-android -I. missing_symbols.c
+$ ~/Android/Sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -c -target aarch64-linux-android -I. android/missing_symbols.c
 ```
 
 See that it creates `missing_symbols.o`
