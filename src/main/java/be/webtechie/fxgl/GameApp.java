@@ -13,6 +13,7 @@ import com.almasb.fxgl.entity.EntityFactory;
 import java.util.Map;
 
 import com.almasb.fxgl.entity.SpawnData;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
