@@ -71,9 +71,7 @@
                 <version>${gluonfx.maven.version}</version>
                 <configuration>
                     <nativeImageArgs>--allow-incomplete-classpath</nativeImageArgs>
-                    <linkerArgs>
-                        <arg>${linker.arg}</arg>
-                    </linkerArgs>
+                    <linkerArgs>${linker.arg}</linkerArgs>
                     <resourcesList>
                         <list>.*\\.lang$</list>
                         <list>.*\\.tmx$</list>
