@@ -130,7 +130,12 @@ public class GameApp extends GameApplication {
         scoreValue.textProperty().bind(getWorldProperties().intProperty("score").asString());
         livesValue.textProperty().bind(getWorldProperties().intProperty("lives").asString());
 
-        getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue);
+        var dpad = getInput().createVirtualDpadView();
+        dpad.setTranslateX(25);
+        dpad.setTranslateY(getAppHeight() - 280D);
+        dpad.setBlendMode(BlendMode.MULTIPLY);
+
+        getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue, dpad);
     }
 
     /**
