@@ -134,7 +134,7 @@ public class GameApp extends GameApplication {
         var dpad = getInput().createVirtualDpadView();
         dpad.setTranslateX(25);
         dpad.setTranslateY(getAppHeight() - 280D);
-        dpad.setBlendMode(BlendMode.MULTIPLY);
+        //dpad.setBlendMode(BlendMode.MULTIPLY);
 
         getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue, dpad);
     }
