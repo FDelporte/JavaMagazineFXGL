@@ -1,22 +1,21 @@
 package be.webtechie.fxgl;
 
-import static com.almasb.fxgl.dsl.FXGL.*;
-import static com.almasb.fxgl.dsl.FXGLForKtKt.getGameScene;
-
 import be.webtechie.fxgl.GameFactory.EntityType;
 import be.webtechie.fxgl.component.PlayerComponent;
 import com.almasb.fxgl.app.GameApplication;
 import com.almasb.fxgl.app.GameSettings;
 import com.almasb.fxgl.entity.Entity;
 import com.almasb.fxgl.entity.EntityFactory;
-
-import java.util.Map;
-
 import com.almasb.fxgl.entity.SpawnData;
-import javafx.scene.effect.BlendMode;
+import com.almasb.fxgl.input.UserAction;
+import com.almasb.fxgl.input.virtual.VirtualButton;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+
+import java.util.Map;
+
+import static com.almasb.fxgl.dsl.FXGL.*;
 
 public class GameApp extends GameApplication {
 
@@ -56,11 +55,11 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initInput() {
-        onKey(KeyCode.LEFT, "left", () -> this.player.getComponent(PlayerComponent.class).left());
-        onKey(KeyCode.RIGHT, "right", () -> this.player.getComponent(PlayerComponent.class).right());
-        onKey(KeyCode.UP, "up", () -> this.player.getComponent(PlayerComponent.class).up());
-        onKey(KeyCode.DOWN, "down", () -> this.player.getComponent(PlayerComponent.class).down());
-        onKeyDown(KeyCode.SPACE, "Bullet", () -> this.player.getComponent(PlayerComponent.class).shoot());
+        //onKey(KeyCode.LEFT, "left", () -> player.getComponent(PlayerComponent.class).left());
+        //onKey(KeyCode.RIGHT, "right", () -> player.getComponent(PlayerComponent.class).right());
+        //onKey(KeyCode.UP, "up", () -> player.getComponent(PlayerComponent.class).up());
+        //onKey(KeyCode.DOWN, "down", () -> player.getComponent(PlayerComponent.class).down());
+        //onKeyDown(KeyCode.SPACE, "Bullet", () -> player.getComponent(PlayerComponent.class).shoot());
     }
 
     /**
@@ -79,7 +78,7 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initGame() {
-        getGameWorld().addEntityFactory(this.gameFactory);
+        getGameWorld().addEntityFactory(gameFactory);
         spawn("background", new SpawnData(0, 0).put("width", getAppWidth())
                 .put("height", getAppHeight()));
         int circleRadius = 80;
@@ -89,7 +88,7 @@ public class GameApp extends GameApplication {
                 .put("radius", circleRadius));
 
         // Add the player
-        this.player = spawn("duke", 0, 0);
+        player = spawn("duke", 0, 0);
     }
 
     /**
@@ -97,8 +96,8 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initPhysics() {
-        onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> this.player.getComponent(PlayerComponent.class).die());
-        onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> this.player.getComponent(PlayerComponent.class).die());
+        onCollisionBegin(EntityType.DUKE, EntityType.CENTER, (duke, center) -> player.getComponent(PlayerComponent.class).die());
+        onCollisionBegin(EntityType.DUKE, EntityType.CLOUD, (enemy, cloud) -> player.getComponent(PlayerComponent.class).die());
         onCollisionBegin(EntityType.BULLET, EntityType.CLOUD, (bullet, cloud) -> {
             inc("score", 1);
             bullet.removeFromWorld();
@@ -131,12 +130,47 @@ public class GameApp extends GameApplication {
         scoreValue.textProperty().bind(getWorldProperties().intProperty("score").asString());
         livesValue.textProperty().bind(getWorldProperties().intProperty("lives").asString());
 
-        var dpad = getInput().createVirtualDpadView();
-        dpad.setTranslateX(25);
-        dpad.setTranslateY(getAppHeight() - 280D);
-        //dpad.setBlendMode(BlendMode.MULTIPLY);
+        var joystick = getInput().createVirtualJoystick();
+        joystick.setTranslateX(25);
+        joystick.setTranslateY(getAppHeight() - 280D);
 
-        getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue, dpad);
+        var controller = getInput().createXboxVirtualControllerView();
+        controller.setTranslateX(getAppWidth() - 340D);
+        controller.setTranslateY(getAppHeight() - 280D);
+        controller.setTranslateZ(0.2);
+
+        getInput().addAction(new UserAction("LEFT") {
+             @Override
+             protected void onAction() {
+                 player.getComponent(PlayerComponent.class).left();
+             }
+        }, KeyCode.LEFT, VirtualButton.LEFT);
+        getInput().addAction(new UserAction("RIGHT") {
+            @Override
+            protected void onAction() {
+                player.getComponent(PlayerComponent.class).right();
+            }
+        }, KeyCode.RIGHT, VirtualButton.RIGHT);
+        getInput().addAction(new UserAction("UP") {
+            @Override
+            protected void onAction() {
+                player.getComponent(PlayerComponent.class).up();
+            }
+        }, KeyCode.UP, VirtualButton.UP);
+        getInput().addAction(new UserAction("DOWN") {
+            @Override
+            protected void onAction() {
+                player.getComponent(PlayerComponent.class).down();
+            }
+        }, KeyCode.DOWN, VirtualButton.DOWN);
+        getInput().addAction(new UserAction("SHOOT") {
+            @Override
+            protected void onAction() {
+                player.getComponent(PlayerComponent.class).shoot();
+            }
+        }, KeyCode.SPACE, VirtualButton.Y);
+
+        getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue, joystick, controller);
     }
 
     /**
