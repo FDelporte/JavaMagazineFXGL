@@ -9,10 +9,16 @@ import com.almasb.fxgl.entity.EntityFactory;
 import com.almasb.fxgl.entity.SpawnData;
 import com.almasb.fxgl.input.UserAction;
 import com.almasb.fxgl.input.virtual.VirtualButton;
+import com.almasb.fxgl.input.virtual.VirtualJoystick;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.security.Key;
 import java.util.Map;
 
 import static com.almasb.fxgl.dsl.FXGL.*;
@@ -28,6 +34,8 @@ public class GameApp extends GameApplication {
      * Player object we are going to use to provide to the factory so it can start a bullet from the player center.
      */
     private Entity player;
+
+    private VirtualJoystick joystick;
 
     /**
      * Main entry point where the application starts.
@@ -55,11 +63,11 @@ public class GameApp extends GameApplication {
      */
     @Override
     protected void initInput() {
-        //onKey(KeyCode.LEFT, "left", () -> player.getComponent(PlayerComponent.class).left());
-        //onKey(KeyCode.RIGHT, "right", () -> player.getComponent(PlayerComponent.class).right());
-        //onKey(KeyCode.UP, "up", () -> player.getComponent(PlayerComponent.class).up());
-        //onKey(KeyCode.DOWN, "down", () -> player.getComponent(PlayerComponent.class).down());
-        //onKeyDown(KeyCode.SPACE, "Bullet", () -> player.getComponent(PlayerComponent.class).shoot());
+        onKey(KeyCode.LEFT, "left", () -> player.getComponent(PlayerComponent.class).left());
+        onKey(KeyCode.RIGHT, "right", () -> player.getComponent(PlayerComponent.class).right());
+        onKey(KeyCode.UP, "up", () -> player.getComponent(PlayerComponent.class).up());
+        onKey(KeyCode.DOWN, "down", () -> player.getComponent(PlayerComponent.class).down());
+        onKey(KeyCode.SPACE, "shoot", () -> player.getComponent(PlayerComponent.class).shoot());
     }
 
     /**
@@ -130,47 +138,20 @@ public class GameApp extends GameApplication {
         scoreValue.textProperty().bind(getWorldProperties().intProperty("score").asString());
         livesValue.textProperty().bind(getWorldProperties().intProperty("lives").asString());
 
-        var joystick = getInput().createVirtualJoystick();
+        joystick = getInput().createVirtualJoystick();
         joystick.setTranslateX(25);
-        joystick.setTranslateY(getAppHeight() - 280D);
+        joystick.setTranslateY(getAppHeight() - 220D);
 
-        var controller = getInput().createXboxVirtualControllerView();
-        controller.setTranslateX(getAppWidth() - 340D);
-        controller.setTranslateY(getAppHeight() - 280D);
-        controller.setTranslateZ(0.2);
+        var shoot = new Button("Shoot");
+        shoot.setMinWidth(100);
+        shoot.setMinHeight(100);
+        shoot.setTranslateX(getAppWidth() - 120D);
+        shoot.setTranslateY(getAppHeight() - 120D);
+        shoot.setTranslateZ(0.2);
+        shoot.setOnMousePressed(e -> getInput().mockKeyPress(KeyCode.SPACE));
+        shoot.setOnMouseReleased(e -> getInput().mockKeyRelease(KeyCode.SPACE));
 
-        getInput().addAction(new UserAction("LEFT") {
-             @Override
-             protected void onAction() {
-                 player.getComponent(PlayerComponent.class).left();
-             }
-        }, KeyCode.LEFT, VirtualButton.LEFT);
-        getInput().addAction(new UserAction("RIGHT") {
-            @Override
-            protected void onAction() {
-                player.getComponent(PlayerComponent.class).right();
-            }
-        }, KeyCode.RIGHT, VirtualButton.RIGHT);
-        getInput().addAction(new UserAction("UP") {
-            @Override
-            protected void onAction() {
-                player.getComponent(PlayerComponent.class).up();
-            }
-        }, KeyCode.UP, VirtualButton.UP);
-        getInput().addAction(new UserAction("DOWN") {
-            @Override
-            protected void onAction() {
-                player.getComponent(PlayerComponent.class).down();
-            }
-        }, KeyCode.DOWN, VirtualButton.DOWN);
-        getInput().addAction(new UserAction("SHOOT") {
-            @Override
-            protected void onAction() {
-                player.getComponent(PlayerComponent.class).shoot();
-            }
-        }, KeyCode.SPACE, VirtualButton.Y);
-
-        getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue, joystick, controller);
+        getGameScene().addUINodes(scoreLabel, scoreValue, livesLabel, livesValue, joystick, shoot);
     }
 
     /**
@@ -180,6 +161,17 @@ public class GameApp extends GameApplication {
     protected void onUpdate(double tpf) {
         if (getGameWorld().getEntitiesByType(EntityType.CLOUD).size() < 10) {
             spawn("cloud", getAppWidth() / 2, getAppHeight() / 2);
+        }
+        var joystickDirection = joystick.getVector();
+        if (joystickDirection.getX() < 0) {
+            player.getComponent(PlayerComponent.class).left();
+        } else if (joystickDirection.getX() > 0) {
+            player.getComponent(PlayerComponent.class).right();
+        }
+        if (joystickDirection.getY() < 0) {
+            player.getComponent(PlayerComponent.class).up();
+        } else if (joystickDirection.getY() > 0) {
+            player.getComponent(PlayerComponent.class).down();
         }
     }
 }
