@@ -73,5 +73,5 @@ jobs:
         with:
           serviceAccountJson: ${{ secrets.ANDROID_SERVICE_ACCOUNT_JSON }}
           packageName: be.webtechie.fxgl
-          releaseFiles: target/client/aarch64-android/gvm/JavaMagazineFXGLDemo.apk
+          releaseFiles: target/gluonfx/aarch64-android/gvm/JavaMagazineFXGLDemo.apk
           track: beta
