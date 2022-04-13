@@ -68,10 +68,10 @@ jobs:
           name: Package
           path: staging
 
-      #- name: Upoad to Google Play
-      #  uses: r0adkll/upload-google-play@v1
-      #  with:
-      #    serviceAccountJsonPlainText: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-      #    packageName: be.webtechie.fxgl
-      #    releaseFiles: target/client/aarch64-android/gvm/javamagazine-fxgl.apk
-      #    track: beta
+      - name: Upoad to Google Play
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_ACCOUNT_JSON }}
+          packageName: be.webtechie.fxgl
+          releaseFiles: target/client/aarch64-android/gvm/JavaMagazineFXGLDemo.apk
+          track: beta
