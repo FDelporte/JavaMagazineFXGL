@@ -13,12 +13,12 @@
         <java.version>17</java.version>
 
         <!-- Dependencies -->
-        <attach.version>4.0.13</attach.version>
-        <fxgl.version>17+dev-SNAPSHOT</fxgl.version>
+        <fxgl.version>17.1</fxgl.version>
 
         <!-- Plugins -->
         <client.plugin.version>0.1.35</client.plugin.version>
-        <gluonfx.maven.version>1.0.13-SNAPSHOT</gluonfx.maven.version>
+        <gluonhq.attach.version>4.0.13</gluonhq.attach.version>
+        <gluonhq.gluonfx.maven.version>1.0.13-SNAPSHOT</gluonhq.gluonfx.maven.version>
         <maven.compiler.version>3.9.0</maven.compiler.version>
         <javafx.plugin.version>0.0.8</javafx.plugin.version>
 
@@ -68,7 +68,7 @@
             <plugin>
                 <groupId>com.gluonhq</groupId>
                 <artifactId>gluonfx-maven-plugin</artifactId>
-                <version>${gluonfx.maven.version}</version>
+                <version>${gluonhq.gluonfx.maven.version}</version>
                 <configuration>
                     <nativeImageArgs>--allow-incomplete-classpath</nativeImageArgs>
                     <linkerArgs>${linker.arg}</linkerArgs>
@@ -119,21 +119,21 @@
                 <dependency>
                     <groupId>com.gluonhq.attach</groupId>
                     <artifactId>display</artifactId>
-                    <version>${attach.version}</version>
+                    <version>${gluonhq.attach.version}</version>
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
                 <dependency>
                     <groupId>com.gluonhq.attach</groupId>
                     <artifactId>lifecycle</artifactId>
-                    <version>${attach.version}</version>
+                    <version>${gluonhq.attach.version}</version>
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
                 <dependency>
                     <groupId>com.gluonhq.attach</groupId>
                     <artifactId>storage</artifactId>
-                    <version>${attach.version}</version>
+                    <version>${gluonhq.attach.version}</version>
                     <classifier>desktop</classifier>
                     <scope>runtime</scope>
                 </dependency>
