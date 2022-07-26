@@ -23,8 +23,6 @@ Article: ["Look out, Duke! Part 2: Control a Java game with a Raspberry Pi"](htt
 
 Article: ["Look out, Duke! Part 3: Compile a Java game to create a native mobile application"](https://blogs.oracle.com/javamagazine/post/java-javafx-game-mobile-graalvm)
 
-> Branch "native"
-
 For this article all dependencies have been pushed to the latest versions (of beginning of 2022).
 
 > Branch "native"
