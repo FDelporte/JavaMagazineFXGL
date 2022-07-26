@@ -19,6 +19,12 @@ Article: ["Look out, Duke! Part 2: Control a Java game with a Raspberry Pi"](htt
 
 > Branch "pi4j"
 
+### Post 3 - "Building a JavaFX game as a native application"
+
+Article: ["Look out, Duke! Part 3: Compile a Java game to create a native mobile application"](https://blogs.oracle.com/javamagazine/post/java-javafx-game-mobile-graalvm)
+
+> Branch "native"
+
 ## Credits
 
 * Cloud computer icon from [flaticon.com](https://www.flaticon.com) > [srip](https://www.flaticon.com/authors/srip)
